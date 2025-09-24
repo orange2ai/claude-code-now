@@ -1,80 +1,77 @@
 # 🖥 Claude Code Now
 
-我做了这款极简的 Claude Code 一键启动器，专为 macOS 设计，可以在任何文件夹快速启动 Claude Code。
 
-Claude Code 并非只是一个开发工具，而是一个广泛的 Agent。
 
-可以帮你分析文件、移动文件、整理文件。
+A minimalist one-click Claude Code launcher designed for macOS, enabling you to quickly launch Claude Code in any folder.
 
-可以基于你的 Obsidian 数据库进行分析、总结、提取洞察。
+Claude Code is more than just a development tool—it's a comprehensive agent that can help you analyze files, move files, organize files, and even analyze your Obsidian database to generate summaries and extract insights.
 
-但是启动 Claude Code 的过程还是太繁琐了。
+However, the process of launching Claude Code is still too cumbersome.
 
-我们的目标就是一键启动，丝滑享受。
+Our goal is one-click launch for a seamless experience.
 
-## ✨ 特性
+## 📖 Language
 
-- **🚀 即时启动** - 双击即可在当前文件夹启动 `Claude Code`
-- **📁 智能路径** - 自动检测 Finder 当前路径，不需要再 cd 输入路径
-- **🎯 零配置** - 不需要在终端再次确认文件夹权限，直接可用
-- **🖥 精美图标** - 专业设计的应用图标
+- [中文文档](README-CN.md)
 
-## 💡 设计理念
+## ✨ Features
 
-遵循 **"简单"** 的产品方法论：
-- 专注一个功能并做到极致
-- 最少操作步骤 - 一键启动
-- 无需交互确认 - 立即工作状态
+- **🚀 Instant Launch** - Double-click to launch `Claude Code` in the current folder
+- **📁 Smart Path Detection** - Automatically detects current Finder path, no need to cd into directories
+- **🎯 Zero Configuration** - No need to confirm folder permissions in terminal, ready to use immediately
+- **🖥 Beautiful Icon** - Professionally designed app icon
 
-## 🎯 使用方法
+## 💡 Design Philosophy
 
-1. **打开文件夹** - 打开 FInder 的任意文件夹
-2. **点击启动** - 点击 Claude Code Now 图标
+Following the **"Simplicity"** product methodology:
+- Focus on one function and perfect it
+- Minimal operation steps - one-click launch
+- No interaction confirmation needed - immediate working state
 
-## 📦 包含文件
+## 🎯 How to Use
 
-### 🍎 主要应用
-- **🖥 Claude Code Now.app** - 主应用程序
+1. **Open Any Folder** - Open any folder in Finder
+2. **Click to Launch** - Click the Claude Code Now icon
 
-### 🛠 脚本版本
-- **claude-code-now.sh** - 终端脚本版本
-- **LaunchClaudeCodeNow.applescript** - AppleScript 版本
+## 📦 What's Included
 
-### 📚 文档
-- **使用说明.md** - 详细使用指南
-- **简单解决方案.md** - 快速上手方案
+### 🍎 Main Application
+- **🖥 Claude Code Now.app** - Main application
 
-## ⚡ 快速安装
+## ⚡ Quick Installation
 
 ```bash
-# 1. 下载项目
-git clone https://github.com/[your-username]/claude-code-now.git
+# 1. Download the project
+git clone https://github.com/orange2ai/claude-code-now.git
 
-# 2. 复制应用到 Applications
+# 2. Copy app to Applications
 cp -r "Claude Code Now.app" /Applications/
 
-# 3. 开始使用
-# 开启两个 Finder 窗口，一个选择【自定义工作阑】，另一个找到这个app，把它拖到第一个Finder窗口的顶部。 Applications 中的 "🖥 Claude Code Now" 即可
+# 3. Start using
+# Open two Finder windows: one set to "Customize Toolbar",
+# drag the app from Applications to the toolbar of the first window
 ```
 
-## 🔧 系统要求
+## 🔧 System Requirements
 
 - macOS 10.9+
-- 已安装 [Claude Code CLI](https://docs.claude.com/en/docs/claude-code)
+- [Claude Code CLI](https://docs.claude.com/en/docs/claude-code) installed
 
-## 🏆 与普通启动的区别
+## 🏆 Comparison with Regular Launch
 
-| 方式 | 操作步骤 | 启动后状态 |
-|------|----------|------------|
-| **claude code** | 选择路径 → 确认 | 需要手动确认 |
-| **🖥 claude code now** | 双击启动 | 立即开始工作 ✨ |
+| Method | Steps | After Launch |
+|--------|-------|-------------|
+| **claude code** | Select path → Confirm | Manual confirmation needed |
+| **🖥 claude code now** | Double-click launch | Start working immediately ✨ |
 
-## 👨‍💼 关于作者
+## 👨‍💼 About the Author
 
-由 orange 创建，专注于极简产品设计。
+Created by orange, focused on minimalist product design.
 
-核心理念：**预测 → 单点击穿 → All-in**
+Core philosophy: **Predict → Single Point Breakthrough → All-in**
 
 ---
 
-⭐ 如果这个工具对你有帮助，请给个 Star！
+⭐ If this tool helps you, please give it a Star!
+
+- 
