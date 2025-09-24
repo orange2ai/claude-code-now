@@ -48,7 +48,7 @@ Claude Code 并非只是一个开发工具，而是一个广泛的 Agent。
 
 ```bash
 # 1. 下载项目
-git clone https://github.com/[your-username]/claude-code-now.git
+git clone https://github.com/orange2ai/claude-code-now.git
 
 # 2. 复制应用到 Applications
 cp -r "Claude Code Now.app" /Applications/
