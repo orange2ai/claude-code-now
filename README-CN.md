@@ -48,13 +48,13 @@ Claude Code 并非只是一个开发工具，而是一个广泛的 Agent。
 
 ```bash
 # 1. 下载项目
-git clone https://github.com/[your-username]/claude-code-now.git
+git clone https://github.com/orange2ai/claude-code-now.git
 
 # 2. 复制应用到 Applications
-cp -r "Claude Code Now.app" /Applications/
+cd orange2ai && cp -r "Claude Code Now.app" /Applications/
 
 # 3. 开始使用
-# 开启两个 Finder 窗口，一个选择【自定义工作阑】，另一个找到这个app，把它拖到第一个Finder窗口的顶部。 Applications 中的 "🖥 Claude Code Now" 即可
+# 开启两个 Finder 窗口，一个选择【自定义工具栏】，另一个找到这个app，把它拖到第一个 Finder 窗口的顶部。 Applications 中的 "🖥 Claude Code Now" 即可
 ```
 
 ## 🔧 系统要求

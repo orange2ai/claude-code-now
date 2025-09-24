@@ -45,7 +45,7 @@ Following the **"Simplicity"** product methodology:
 git clone https://github.com/orange2ai/claude-code-now.git
 
 # 2. Copy app to Applications
-cp -r "Claude Code Now.app" /Applications/
+cd orange2ai && cp -r "Claude Code Now.app" /Applications/
 
 # 3. Start using
 # Open two Finder windows: one set to "Customize Toolbar",

@@ -1,15 +1,25 @@
 #!/bin/bash
 
-# 🖥 Claude Code Now - 即时启动，无需确认
-# 获取传入的路径参数（如果有的话）
+# 🖥 Claude Code Now - Launch instantly without confirmation
+# Get the path parameter if provided
 TARGET_DIR="$1"
 
-# 设置完整的PATH，包含常见的Node.js和CLI工具路径
-export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+# Set complete PATH including common Node.js and CLI tool paths
+# First, try to source common shell configurations to get the proper PATH
+if [ -f "$HOME/.zshrc" ]; then
+    source "$HOME/.zshrc" 2>/dev/null || true
+elif [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc" 2>/dev/null || true
+elif [ -f "$HOME/.bash_profile" ]; then
+    source "$HOME/.bash_profile" 2>/dev/null || true
+fi
 
-# 如果没有传入参数，尝试获取Finder的当前路径
+# Add common paths that might not be in the shell config
+export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/.cargo/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+
+# If no parameter provided, try to get current Finder path
 if [ -z "$TARGET_DIR" ]; then
-    # 使用AppleScript获取Finder当前路径
+    # Use AppleScript to get current Finder path
     TARGET_DIR=$(osascript -e '
         tell application "Finder"
             try
@@ -21,27 +31,58 @@ if [ -z "$TARGET_DIR" ]; then
     ')
 fi
 
-# 如果仍然没有路径，使用用户主目录
+# If still no path, use user home directory
 if [ -z "$TARGET_DIR" ]; then
     TARGET_DIR="$HOME"
 fi
 
-# 检查目录是否存在
+# Check if directory exists
 if [ ! -d "$TARGET_DIR" ]; then
-    osascript -e "display alert \"错误\" message \"目录 '$TARGET_DIR' 不存在\""
+    osascript -e "display alert \"Error\" message \"Directory '$TARGET_DIR' does not exist\""
     exit 1
 fi
 
-# 检查Claude Code是否已安装
+# Check if Claude Code is installed
 if ! command -v claude >/dev/null 2>&1; then
-    osascript -e "display alert \"Claude Code 未安装\" message \"请检查 Claude Code CLI 是否正确安装并在 PATH 中\""
-    exit 1
+    # Try to find claude command in common locations
+    CLAUDE_PATH=""
+    for path in "$HOME/Library/pnpm/claude" "$HOME/.local/bin/claude" "/usr/local/bin/claude" "/opt/homebrew/bin/claude"; do
+        if [ -f "$path" ] && [ -x "$path" ]; then
+            CLAUDE_PATH="$path"
+            break
+        fi
+    done
+
+    if [ -z "$CLAUDE_PATH" ]; then
+        osascript -e "display alert \"Claude Code Not Installed\" message \"Please check if Claude Code CLI is properly installed. Try running: npm install -g @anthropic/claude-code\""
+        exit 1
+    fi
 fi
 
-# 启动Terminal并在指定目录运行Claude Code
-osascript <<EOF
-tell application "Terminal"
+# Launch iTerm (preferred) or Terminal and run Claude Code in specified directory
+if [ -d "/Applications/iTerm.app" ] || [ -d "/Applications/iTerm 2.app" ]; then
+    # Use iTerm if available
+    if [ -d "/Applications/iTerm 2.app" ]; then
+        ITERM_APP="iTerm 2"
+    else
+        ITERM_APP="iTerm"
+    fi
+
+    osascript <<EOF
+tell application "$ITERM_APP"
     activate
-    do script "export PATH=\"$PATH\" && cd " & quoted form of "$TARGET_DIR" & " && claude code now"
+    create window with default profile
+    tell current session of current window
+        write text "cd " & quoted form of "$TARGET_DIR" & " && claude code now"
+    end tell
 end tell
 EOF
+else
+    # Fallback to Terminal
+    osascript <<EOF
+tell application "Terminal"
+    activate
+    do script "cd " & quoted form of "$TARGET_DIR" & " && claude code now"
+end tell
+EOF
+fi
