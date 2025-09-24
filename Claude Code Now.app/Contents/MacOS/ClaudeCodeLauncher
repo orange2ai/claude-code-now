@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# 🖥 Claude Code Now - 即时启动，无需确认
+# 获取传入的路径参数（如果有的话）
+TARGET_DIR="$1"
+
+# 设置完整的PATH，包含常见的Node.js和CLI工具路径
+export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+
+# 如果没有传入参数，尝试获取Finder的当前路径
+if [ -z "$TARGET_DIR" ]; then
+    # 使用AppleScript获取Finder当前路径
+    TARGET_DIR=$(osascript -e '
+        tell application "Finder"
+            try
+                set currentPath to POSIX path of (target of front window as alias)
+            on error
+                set currentPath to POSIX path of (path to desktop)
+            end try
+        end tell
+    ')
+fi
+
+# 如果仍然没有路径，使用用户主目录
+if [ -z "$TARGET_DIR" ]; then
+    TARGET_DIR="$HOME"
+fi
+
+# 检查目录是否存在
+if [ ! -d "$TARGET_DIR" ]; then
+    osascript -e "display alert \"错误\" message \"目录 '$TARGET_DIR' 不存在\""
+    exit 1
+fi
+
+# 检查Claude Code是否已安装
+if ! command -v claude >/dev/null 2>&1; then
+    osascript -e "display alert \"Claude Code 未安装\" message \"请检查 Claude Code CLI 是否正确安装并在 PATH 中\""
+    exit 1
+fi
+
+# 启动Terminal并在指定目录运行Claude Code
+osascript <<EOF
+tell application "Terminal"
+    activate
+    do script "export PATH=\"$PATH\" && cd " & quoted form of "$TARGET_DIR" & " && claude code now"
+end tell
+EOF
