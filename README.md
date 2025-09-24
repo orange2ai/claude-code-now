@@ -73,5 +73,3 @@ Core philosophy: **Predict → Single Point Breakthrough → All-in**
 ---
 
 ⭐ If this tool helps you, please give it a Star!
-
-- 
