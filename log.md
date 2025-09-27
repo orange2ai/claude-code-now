@@ -37,9 +37,17 @@
 - ✅ 更新项目地址为正确的 GitHub 仓库：`https://github.com/orange2ai/claude-code-now`
 - 📝 目的：优化程序坞使用体验，简化项目文件结构
 
+### GitHub 发布完成
+- ✅ 成功推送代码到 GitHub 仓库：`https://github.com/orange2ai/claude-code-now`
+- ✅ 解决 README.md 合并冲突，保留了原有的项目介绍
+- ✅ 创建版本标签 `v1.0.0` 并推送到远程
+- ✅ 创建新版本标签 `v1.1.0` - 程序坞极简启动版
+- ✅ 更新 Homebrew Formula 到 v1.1.0 版本
+- ✅ 推送所有更改到远程仓库
+
 ## 2024-09-27 下一步计划
 ### Homebrew 发布准备
-- 🔄 创建 GitHub Release 和版本标签
+- 🔄 在 GitHub 网页端创建 Release v1.0.0
 - 🔄 发布到 Homebrew Tap
 - 🔄 测试 Homebrew 安装流程
 
