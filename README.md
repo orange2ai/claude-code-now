@@ -1,5 +1,7 @@
 # 🖥 Claude Code Now
 
+**中文** | [English](README.en.md)
+
 让 Claude Code 启动更简单。
 
 程序坞单击启动，或者在任何文件夹随时启动。
