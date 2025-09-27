@@ -6,7 +6,7 @@
 # 设置完整的PATH
 export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
 
-TARGET_DIR="${1:-$(pwd)}"
+TARGET_DIR="${1:-/Users/oran/Documents/Claude Code}"
 
 # 检查目录是否存在
 if [ ! -d "$TARGET_DIR" ]; then

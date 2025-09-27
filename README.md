@@ -18,9 +18,9 @@
 
 ## 🎯 使用方法
 
-1. **双击启动** - 在任意 Finder 窗口中双击应用
+1. **程序坞启动** - 在程序坞中双击应用，自动启动到 Claude Code 文件夹
 2. **拖拽启动** - 拖拽文件夹到应用图标上
-3. **工具栏使用** - 添加到 Finder 工具栏一键使用
+3. **命令行启动** - 使用 `claude-code-now [路径]` 命令
 
 ## 📦 包含文件
 
@@ -37,15 +37,27 @@
 
 ## ⚡ 快速安装
 
+### 方法一：Homebrew 安装 (推荐)
+```bash
+# 添加 tap (待发布)
+brew tap orange2ai/claude-code-now
+
+# 安装
+brew install claude-code-now
+
+# 自动安装到 Applications 并可在命令行使用
+```
+
+### 方法二：手动安装
 ```bash
 # 1. 下载项目
-git clone https://github.com/[your-username]/claude-code-now.git
+git clone https://github.com/orange2ai/claude-code-now.git
 
 # 2. 复制应用到 Applications
 cp -r "Claude Code Now.app" /Applications/
 
 # 3. 开始使用
-# 双击 Applications 中的 "🖥 Claude Code Now" 即可
+# 在程序坞中双击 "🖥 Claude Code Now" 即可
 ```
 
 ## 🔧 系统要求
@@ -55,10 +67,10 @@ cp -r "Claude Code Now.app" /Applications/
 
 ## 🏆 与普通启动的区别
 
-| 方式 | 操作步骤 | 启动后状态 |
-|------|----------|------------|
-| **claude code** | 选择路径 → 确认 | 需要手动确认 |
-| **🖥 claude code now** | 双击启动 | 立即开始工作 ✨ |
+| 方式 | 操作步骤 | 启动位置 |
+|------|----------|----------|
+| **claude code** | 选择路径 → 确认 | 当前目录或手动选择 |
+| **🖥 claude code now** | 程序坞双击 | 自动启动到 Claude Code 文件夹 ✨ |
 
 ## 👨‍💼 关于作者
 
