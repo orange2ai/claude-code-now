@@ -1,7 +1,7 @@
 class ClaudeCodeNow < Formula
   desc "🖥 Claude Code Now - 极简的 Claude Code 一键启动器"
   homepage "https://github.com/orange2ai/claude-code-now"
-  url "https://github.com/orange2ai/claude-code-now/archive/v1.0.0.tar.gz"
+  url "https://github.com/orange2ai/claude-code-now/archive/v1.1.0.tar.gz"
   sha256 "0000000000000000000000000000000000000000000000000000000000000000"
   license "MIT"
 
