@@ -45,6 +45,12 @@
 - ✅ 更新 Homebrew Formula 到 v1.1.0 版本
 - ✅ 推送所有更改到远程仓库
 
+### 项目清理完成
+- ✅ 删除过时文件：`launch-claude-code.sh`、`LaunchClaudeCode.applescript`
+- ✅ 删除过时文档：`简单解决方案.md`、`一键安装.sh`
+- ✅ 保持项目结构简洁，专注核心功能
+- 📝 目的：避免用户混淆，遵循"简单"理念
+
 ## 2024-09-27 下一步计划
 ### Homebrew 发布准备
 - 🔄 在 GitHub 网页端创建 Release v1.0.0
