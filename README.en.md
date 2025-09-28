@@ -130,8 +130,8 @@ Philosophy: **Predict → Single Point Breakthrough → All-in**
 
 ---
 
-⭐ **Give a Star if it helps!** https://github.com/orange2ai/claude-code-now
+⭐ **Give a Star if it helps!** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
 
 💬 **Questions?** [Submit Issue](https://github.com/orange2ai/claude-code-now/issues)
 
-🔗 **Permanent Project Link:** https://github.com/orange2ai/claude-code-now
+🔗 **Permanent Project Link:** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
