@@ -2,7 +2,7 @@
 
 **中文** | [English](README.en.md)
 
-让 Claude Code 启动更简单，转为 MacOS 打造。
+让 Claude Code 启动更简单，专为 MacOS 打造。
 
 程序坞单击启动，或者在任何文件夹随时启动。
 
