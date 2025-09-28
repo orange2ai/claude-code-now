@@ -15,10 +15,6 @@ Click Dock to launch, or start from any folder instantly.
 
 Launch Claude Code 10 times a day? That's 300 precious seconds wasted.
 
-**Use CCN, get 10x efficiency boost instantly!**
-
-Save 5 minutes daily, save 30 hours annually.
-
 ## 🎯 Why Do You Need This?
 
 **Claude Code isn't just a coding assistant** — it does data analysis, file organization, and document processing.
@@ -30,6 +26,10 @@ Claude Code is great, but launching is tedious:
 - Need to confirm paths
 
 **Too much hassle!**
+
+**Use CCN, get 10x efficiency boost instantly!**
+
+Save 5 minutes daily, save 30 hours annually.
 
 ## ✨ Solution
 
