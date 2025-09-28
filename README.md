@@ -130,8 +130,8 @@ orange 制作，专注极简产品。
 
 ---
 
-⭐ **好用就给个 Star！** https://github.com/orange2ai/claude-code-now
+⭐ **好用就给个 Star！** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
 
 💬 **有问题？** [提交 Issue](https://github.com/orange2ai/claude-code-now/issues)
 
-🔗 **项目永久链接GitHub:** https://github.com/orange2ai/claude-code-now
+🔗 **项目永久链接GitHub:** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
