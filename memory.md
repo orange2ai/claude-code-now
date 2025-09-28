@@ -11,7 +11,6 @@
 ## 项目文件结构
 - `Claude Code Now.app` - 主应用程序
 - `claude-code-now.sh` - 核心启动脚本
-- `LaunchClaudeCodeNow.applescript` - AppleScript版本
 - 安装脚本：`一键安装.sh`、`安装右键菜单.sh`、`创建标准服务.sh`
 
 ## 主要功能

@@ -20,8 +20,6 @@ class ClaudeCodeNow < Formula
       system "ln", "-sf", "#{prefix}/Claude Code Now.app", "/Applications/"
     end
 
-    # 安装 AppleScript 版本
-    prefix.install "LaunchClaudeCodeNow.applescript"
 
     # 安装文档
     doc.install "README.md", "使用说明.md", "memory.md"
