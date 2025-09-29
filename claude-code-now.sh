@@ -19,9 +19,9 @@ cd "$TARGET_DIR" || exit 1
 
 echo "🖥 在目录 '$TARGET_DIR' 启动 Claude Code Now..."
 
-# 启动Claude Code Now - 即时启动，无需确认
+# 启动Claude Code - 即时启动，无需确认
 if command -v claude >/dev/null 2>&1; then
-    claude code now
+    claude --permission-mode bypassPermissions
 else
     echo "错误: Claude Code 未安装或不在 PATH 中"
     echo "请确保已安装 Claude Code CLI"

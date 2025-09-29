@@ -139,5 +139,46 @@
 
 **核心理念始终不变：简单、用户至上、极致体验**
 
+## 2024-09-30
+### Claude Code 2.0 兼容性更新
+- ✅ 修复程序坞启动默认目录问题
+  - 问题：从程序坞启动时会跳转到桌面目录
+  - 原因：AppleScript 无法获取 Finder 路径时，错误地回退到桌面
+  - 解决：修改 ClaudeCodeLauncher 脚本，无法获取 Finder 路径时使用默认目录 `/Users/oran/Documents/Claude Code`
+
+- ✅ 升级到 Claude Code 2.0 命令
+  - Claude Code 2.0 简化了命令结构
+  - 旧命令：`claude code now` ❌
+  - 新命令：`claude` ✅
+  - 更新文件：
+    - `Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher`
+    - `claude-code-now.sh`
+
+- ✅ 添加自动跳过权限确认
+  - 使用参数：`--permission-mode bypassPermissions`
+  - 效果：跳过工作区信任对话框和所有权限检查
+  - 目的：实现真正的"即时启动，无需确认"
+  - 更新文件：
+    - `Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher`
+    - `claude-code-now.sh`
+
+### 技术细节
+- **路径回退逻辑优化**
+  1. 有拖拽文件夹 → 使用拖拽的路径
+  2. 有 Finder 窗口 → 使用 Finder 当前路径
+  3. 无 Finder 窗口（从程序坞启动）→ 使用默认路径 `/Users/oran/Documents/Claude Code`
+
+- **完整启动命令**
+  ```bash
+  claude --permission-mode bypassPermissions
+  ```
+
+### 用户体验提升
+- 🚀 程序坞启动更智能：不再跳到桌面，直接进入工作目录
+- ⚡ 真正零确认：无需手动信任工作区，一键直达
+- 🎯 完全兼容 Claude Code 2.0 最新版本
+
+📝 目的：保持与 Claude Code 2.0 的完美兼容，提供更流畅的启动体验
+
 ---
 *记录原则：每次改动都要写入此日志，方便以后查找*
