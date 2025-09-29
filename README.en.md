@@ -2,6 +2,8 @@
 
 [中文](README.md) | **English**
 
+**The World's Fastest Claude Code Launcher**
+
 Make Claude Code launching simpler, built for macOS.
 
 Click Dock to launch, or start from any folder instantly.
@@ -10,10 +12,10 @@ Click Dock to launch, or start from any folder instantly.
 
 | Launch Method | Steps | Time |
 |---------------|-------|------|
-| **Before** | Open Terminal → Choose folder → Confirm | ~30s |
+| **Before** | Open Terminal → Choose folder → Confirm workspace → Wait for permission | ~35s |
 | **Now** | Click Dock | ~3s ✨ |
 
-Launch Claude Code 10 times a day? That's 300 precious seconds wasted.
+Launch Claude Code 10 times a day? That's 5 precious minutes wasted.
 
 ## 🎯 Why Do You Need This?
 
@@ -23,11 +25,14 @@ Claude Code is great, but launching is tedious:
 
 - Always need to open Terminal
 - Have to choose folders
-- Need to confirm paths
+- Need to confirm workspace trust
+- Wait for permission dialogs
 
 **Too much hassle!**
 
-**Use CCN, get 10x efficiency boost instantly!**
+**Use Claude Code Now, get 10x efficiency boost instantly!**
+
+Auto-skip permission dialogs, truly one-click launch.
 
 Save 5 minutes daily, save 30 hours annually.
 
