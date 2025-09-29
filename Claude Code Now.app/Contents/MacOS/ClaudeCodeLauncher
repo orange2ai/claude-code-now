@@ -15,15 +15,15 @@ if [ -z "$TARGET_DIR" ]; then
             try
                 set currentPath to POSIX path of (target of front window as alias)
             on error
-                set currentPath to POSIX path of (path to desktop)
+                set currentPath to ""
             end try
         end tell
     ')
 fi
 
-# 如果仍然没有路径，使用用户主目录
+# 如果没有获取到路径，使用默认目录
 if [ -z "$TARGET_DIR" ]; then
-    TARGET_DIR="$HOME"
+    TARGET_DIR="/Users/oran/Documents/Claude Code"
 fi
 
 # 检查目录是否存在
@@ -42,6 +42,6 @@ fi
 osascript <<EOF
 tell application "Terminal"
     activate
-    do script "export PATH=\"$PATH\" && cd " & quoted form of "$TARGET_DIR" & " && claude code now"
+    do script "export PATH=\"$PATH\" && cd " & quoted form of "$TARGET_DIR" & " && claude --permission-mode bypassPermissions"
 end tell
 EOF
