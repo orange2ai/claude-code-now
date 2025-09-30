@@ -11,6 +11,12 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
 
 ## Important Decisions & Lessons
 
+### Internationalization Principle
+- **English as default**: All documentation (README.md, memory.md) use English as default language
+- **Multilingual support**: Provide Chinese (README.zh.md) and Japanese (README.ja.md) versions
+- **Commit messages**: Always write in English for global collaboration
+- **Rationale**: Project targets global users, not just Chinese users
+
 ### PATH Detection Strategy
 - Cannot rely solely on `command -v`, must traverse common installation locations
 - Common paths: `~/.npm-global/bin`, `~/.npm/bin`, `~/.local/bin`, `/usr/local/bin`, `/opt/homebrew/bin`
