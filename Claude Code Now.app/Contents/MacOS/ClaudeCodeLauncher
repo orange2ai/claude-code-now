@@ -5,7 +5,8 @@
 TARGET_DIR="$1"
 
 # 设置完整的PATH，包含常见的Node.js和CLI工具路径
-export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+# 添加更多可能的路径以兼容不同的安装方式
+export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
 
 # 如果没有传入参数，尝试获取Finder的当前路径
 if [ -z "$TARGET_DIR" ]; then
@@ -33,8 +34,24 @@ if [ ! -d "$TARGET_DIR" ]; then
 fi
 
 # 检查Claude Code是否已安装
-if ! command -v claude >/dev/null 2>&1; then
-    osascript -e "display alert \"Claude Code 未安装\" message \"请检查 Claude Code CLI 是否正确安装并在 PATH 中\""
+# 尝试在多个可能的路径中查找 claude 命令
+CLAUDE_PATH=""
+if command -v claude >/dev/null 2>&1; then
+    CLAUDE_PATH=$(command -v claude)
+else
+    # 尝试常见的安装位置
+    for path in "$HOME/.npm-global/bin/claude" "$HOME/.npm/bin/claude" "$HOME/.local/bin/claude" "/usr/local/bin/claude" "/opt/homebrew/bin/claude"; do
+        if [ -x "$path" ]; then
+            CLAUDE_PATH="$path"
+            break
+        fi
+    done
+fi
+
+if [ -z "$CLAUDE_PATH" ]; then
+    osascript -e "display alert \"Claude Code 未安装\" message \"请检查 Claude Code CLI 是否正确安装并在 PATH 中
+
+提示：请尝试在命令行运行 'command -v claude' 来检查 claude 的路径\""
     exit 1
 fi
 

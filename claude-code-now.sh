@@ -3,8 +3,8 @@
 # 🖥 Claude Code Now - 即时启动，无需确认
 # Shell script to launch Claude Code Now in current directory
 
-# 设置完整的PATH
-export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
+# 设置完整的PATH，包含更多可能的安装路径
+export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
 
 TARGET_DIR="${1:-/Users/oran/Documents/Claude Code}"
 
@@ -20,10 +20,33 @@ cd "$TARGET_DIR" || exit 1
 echo "🖥 在目录 '$TARGET_DIR' 启动 Claude Code Now..."
 
 # 启动Claude Code - 即时启动，无需确认
+# 尝试在多个可能的路径中查找 claude 命令
+CLAUDE_PATH=""
 if command -v claude >/dev/null 2>&1; then
-    claude --permission-mode bypassPermissions
+    CLAUDE_PATH=$(command -v claude)
 else
-    echo "错误: Claude Code 未安装或不在 PATH 中"
-    echo "请确保已安装 Claude Code CLI"
+    # 尝试常见的安装位置
+    for path in "$HOME/.npm-global/bin/claude" "$HOME/.npm/bin/claude" "$HOME/.local/bin/claude" "/usr/local/bin/claude" "/opt/homebrew/bin/claude"; do
+        if [ -x "$path" ]; then
+            CLAUDE_PATH="$path"
+            break
+        fi
+    done
+fi
+
+if [ -z "$CLAUDE_PATH" ]; then
+    echo "❌ 错误: Claude Code 未安装或不在 PATH 中"
+    echo ""
+    echo "💡 请确保已安装 Claude Code CLI"
+    echo "💡 提示：请尝试运行 'command -v claude' 来检查 claude 的路径"
+    echo ""
+    echo "📝 常见安装位置："
+    echo "   - $HOME/.npm-global/bin/claude"
+    echo "   - $HOME/.npm/bin/claude"
+    echo "   - /usr/local/bin/claude"
+    echo "   - /opt/homebrew/bin/claude"
     exit 1
 fi
+
+echo "✅ 找到 Claude Code: $CLAUDE_PATH"
+"$CLAUDE_PATH" --permission-mode bypassPermissions
