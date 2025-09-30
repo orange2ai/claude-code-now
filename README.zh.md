@@ -133,6 +133,10 @@ orange 制作，专注极简产品。
 
 理念：**预测 → 单点击穿 → All-in**
 
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=orange2ai/claude-code-now&type=Date)](https://star-history.com/#orange2ai/claude-code-now&Date)
+
 ---
 
 ⭐ **好用就给个 Star！** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)

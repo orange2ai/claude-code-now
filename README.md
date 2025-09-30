@@ -133,6 +133,10 @@ Made by orange, focused on minimal product design.
 
 Philosophy: **Predict → Single Point Breakthrough → All-in**
 
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=orange2ai/claude-code-now&type=Date)](https://star-history.com/#orange2ai/claude-code-now&Date)
+
 ---
 
 ⭐ **Give a Star if it helps!** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)

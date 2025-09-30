@@ -134,6 +134,10 @@ orange 制作、ミニマル製品に特化。
 
 理念：**予測 → 単点突破 → All-in**
 
+## ⭐ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=orange2ai/claude-code-now&type=Date)](https://star-history.com/#orange2ai/claude-code-now&Date)
+
 ---
 
 ⭐ **気に入ったら Star をください！** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
