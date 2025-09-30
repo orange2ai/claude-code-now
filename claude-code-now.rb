@@ -1,8 +1,8 @@
 class ClaudeCodeNow < Formula
   desc "🖥 Claude Code Now - 极简的 Claude Code 一键启动器"
   homepage "https://github.com/orange2ai/claude-code-now"
-  url "https://github.com/orange2ai/claude-code-now/archive/v1.1.0.tar.gz"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  url "https://github.com/orange2ai/claude-code-now/archive/v1.2.1.tar.gz"
+  sha256 "abb4544c478efd7c02f4c415a848e5ba046989ee97915582e64af8e61c7a2f94"
   license "MIT"
 
   depends_on "node"
@@ -22,7 +22,7 @@ class ClaudeCodeNow < Formula
 
 
     # 安装文档
-    doc.install "README.md", "使用说明.md", "memory.md"
+    doc.install "README.md", "memory.md"
   end
 
   def caveats
