@@ -4,9 +4,11 @@
 
 **The World's Fastest Claude Code Launcher**
 
-Make Claude Code launching simpler, built for macOS.
+Make Claude Code launching simpler, built for macOS and Windows.
 
 Click Dock to launch, or start from any folder instantly.
+
+> **📢 Windows Version Available**: Check the `windows` branch for Windows support!
 
 ## 🏆 Efficiency Comparison
 
@@ -38,15 +40,20 @@ Save 5 minutes daily, save 30 hours annually.
 
 ## ✨ Solution
 
-### 🖥 Dock Launch
+### 🖥 Dock Launch (macOS)
 
 Put the app in Dock, click to launch Claude Code instantly.
 
-### ⚡ Finder Toolbar Launch
+### ⚡ Finder Toolbar Launch (macOS)
 
 Drag the app to Finder toolbar, click to launch in any folder.
 
+### 📁 Right-Click Launch (Windows)
+
+Right-click on any folder to launch Claude Code Now.
+
 ### 📁 Launch from Any Folder
+
 Put the APP in any folder, click the icon to launch directly.
 
 That simple.
@@ -54,7 +61,9 @@ That simple.
 
 ## ⚡ Quick Start
 
-### Step 1: Prepare Working Folder
+### macOS
+
+#### Step 1: Prepare Working Folder
 Create `Claude Code` folder in your `Documents`:
 
 ```
@@ -62,9 +71,9 @@ Documents/
 └── Claude Code/          # Create this folder
 ```
 
-### Step 2: Install App
+#### Step 2: Install App
 
-#### Method 1: Direct Download (Recommended)
+**Method 1: Direct Download (Recommended)**
 1. Download [Latest Release](https://github.com/orange2ai/claude-code-now/releases)
 2. Drag `Claude Code Now.app` to Applications folder
 
@@ -79,19 +88,19 @@ Documents/
 
 6. Click toolbar icon, Claude Code launches in current directory
 
-#### Method 2: Git Clone
+**Method 2: Git Clone**
 ```bash
 git clone https://github.com/orange2ai/claude-code-now.git
 cp -r "Claude Code Now.app" /Applications/
 ```
 
-#### Method 3: Homebrew
+**Method 3: Homebrew**
 ```bash
 brew tap orange2ai/claude-code-now
 brew install claude-code-now
 ```
 
-### Step 3: Start Using
+#### Step 3: Start Using
 
 **🖥 Dock Method:**
 1. **Click Dock icon** - Auto-launch in `~/Documents/Claude Code` folder
@@ -101,6 +110,46 @@ brew install claude-code-now
 1. **Open any folder** - Navigate to your desired working directory in Finder
 2. **Click toolbar icon** - Claude Code launches in current directory
 3. **Start working** - Directly operate in selected directory
+
+### Windows
+
+#### Step 1: Prerequisites
+- Install [Node.js](https://nodejs.org)
+- Install Claude Code CLI: `npm install -g @anthropic-ai/claude-code`
+
+#### Step 2: Download and Install
+1. Download from the `windows` branch or clone:
+```bash
+git clone -b windows https://github.com/orange2ai/claude-code-now.git
+cd claude-code-now
+```
+
+2. Run installation (as Administrator):
+```batch
+install.bat
+```
+
+3. Install right-click menu (as Administrator):
+```batch
+install-context-menu.bat
+```
+
+#### Step 3: Start Using
+
+**Right-click Method:**
+1. Right-click on any folder in File Explorer
+2. Select "Claude Code Now"
+3. Claude Code launches in that directory
+
+**Command Line:**
+```batch
+claude-code-now
+```
+
+**Uninstall right-click menu:**
+```batch
+uninstall-context-menu.bat
+```
 
 
 ## 💡 Design Philosophy
@@ -113,16 +162,26 @@ Result: One-click launch, ultimate simplicity.
 
 ## 🔧 System Requirements
 
+### macOS
 - **System**: macOS 10.9+
 - **Dependency**: [Claude Code CLI](https://docs.claude.com/en/docs/claude-code) installed
 - **Folder**: Create `Claude Code` folder in `~/Documents`
+
+### Windows
+- **System**: Windows 7+
+- **Dependency**: Node.js and [Claude Code CLI](https://docs.claude.com/en/docs/claude-code)
+- **Permissions**: Administrator rights for installation
 
 ## 📦 Project Files
 
 ```
 Claude Code Now/
-├── 🖥 Claude Code Now.app        # Main app
-├── claude-code-now.sh           # Launch script
+├── 🖥 Claude Code Now.app        # macOS app
+├── claude-code-now.sh           # macOS launch script
+├── claude-code-now.ps1          # Windows PowerShell script
+├── install.bat                  # Windows installation script
+├── install-context-menu.bat     # Windows right-click menu installer
+├── uninstall-context-menu.bat   # Windows right-click menu uninstaller
 ├── claude-code-now.rb           # Homebrew install
 └── 📚 Documentation
 ```
