@@ -17,6 +17,9 @@ fi
 # Add common paths that might not be in the shell config
 export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/.cargo/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
 
+# 保存上次目录的配置文件
+LAST_DIR_FILE="$HOME/.claude-code-now-last-dir"
+
 # If no parameter provided, try to get current Finder path
 if [ -z "$TARGET_DIR" ]; then
     # Use AppleScript to get current Finder path
@@ -31,9 +34,14 @@ if [ -z "$TARGET_DIR" ]; then
     ')
 fi
 
-# If still no path, use default directory
+# If still no Finder path, try to use last saved directory
+if [ -z "$TARGET_DIR" ] && [ -f "$LAST_DIR_FILE" ]; then
+    TARGET_DIR=$(cat "$LAST_DIR_FILE")
+fi
+
+# If still no path, use user home directory
 if [ -z "$TARGET_DIR" ]; then
-    TARGET_DIR="/Users/oran/Documents/Claude Code"
+    TARGET_DIR="$HOME"
 fi
 
 # Check if directory exists
@@ -65,6 +73,9 @@ Try running: npm install -g claude
 Or check the path with: command -v claude\""
     exit 1
 fi
+
+# 保存当前目录，供下次使用
+echo "$TARGET_DIR" > "$LAST_DIR_FILE"
 
 # Launch iTerm (preferred) or Terminal and run Claude Code in specified directory
 if [ -d "/Applications/iTerm.app" ] || [ -d "/Applications/iTerm 2.app" ]; then

@@ -6,7 +6,19 @@
 # 设置完整的PATH，包含更多可能的安装路径
 export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
 
-TARGET_DIR="${1:-/Users/oran/Documents/Claude Code}"
+# 保存上次目录的配置文件
+LAST_DIR_FILE="$HOME/.claude-code-now-last-dir"
+
+# 如果用户提供了参数，使用参数
+if [ -n "$1" ]; then
+    TARGET_DIR="$1"
+# 否则尝试读取上次的目录
+elif [ -f "$LAST_DIR_FILE" ]; then
+    TARGET_DIR=$(cat "$LAST_DIR_FILE")
+# 都没有则使用主目录
+else
+    TARGET_DIR="$HOME"
+fi
 
 # 检查目录是否存在
 if [ ! -d "$TARGET_DIR" ]; then
@@ -49,4 +61,8 @@ if [ -z "$CLAUDE_PATH" ]; then
 fi
 
 echo "✅ 找到 Claude Code: $CLAUDE_PATH"
+
+# 保存当前目录，供下次使用
+echo "$TARGET_DIR" > "$LAST_DIR_FILE"
+
 "$CLAUDE_PATH" --permission-mode bypassPermissions
