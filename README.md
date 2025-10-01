@@ -8,6 +8,8 @@ Make Claude Code launching simpler, built for macOS.
 
 Click Dock to launch, or start from any folder instantly.
 
+> **🔔 Windows Users**: Windows version is now in beta testing on the [`windows`](https://github.com/orange2ai/claude-code-now/tree/windows) branch! Welcome to try and share your feedback!
+
 ## 🏆 Efficiency Comparison
 
 | Launch Method | Steps | Time |
