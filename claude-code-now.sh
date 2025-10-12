@@ -3,8 +3,42 @@
 # 🖥 Claude Code Now - 即时启动，无需确认
 # Shell script to launch Claude Code Now in current directory
 
+# Detect and add nvm Node.js path dynamically
+NVM_NODE_PATH=""
+if [ -d "$HOME/.nvm" ]; then
+    # Try to load nvm
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 2>/dev/null || true
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 2>/dev/null || true
+
+    # Try to get current/default Node.js version
+    if command -v nvm >/dev/null 2>&1; then
+        # Get current node version or default version
+        CURRENT_NODE_VERSION=$(nvm current 2>/dev/null | grep -v 'none' | head -1 || nvm alias default 2>/dev/null | grep -v 'default -> N/A' | head -1 || "")
+        if [ -n "$CURRENT_NODE_VERSION" ] && [ "$CURRENT_NODE_VERSION" != "none" ] && [ "$CURRENT_NODE_VERSION" != "system" ]; then
+            NVM_NODE_PATH="$HOME/.nvm/versions/node/$CURRENT_NODE_VERSION/bin"
+        else
+            # Fallback: find the latest installed version
+            LATEST_NODE_VERSION=$(ls "$HOME/.nvm/versions/node/" 2>/dev/null | sort -V | tail -1 || echo "")
+            if [ -n "$LATEST_NODE_VERSION" ]; then
+                NVM_NODE_PATH="$HOME/.nvm/versions/node/$LATEST_NODE_VERSION/bin"
+            fi
+        fi
+    else
+        # Fallback: find the latest installed version without nvm command
+        LATEST_NODE_VERSION=$(ls "$HOME/.nvm/versions/node/" 2>/dev/null | sort -V | tail -1 || echo "")
+        if [ -n "$LATEST_NODE_VERSION" ]; then
+            NVM_NODE_PATH="$HOME/.nvm/versions/node/$LATEST_NODE_VERSION/bin"
+        fi
+    fi
+fi
+
 # 设置完整的PATH，包含更多可能的安装路径
-export PATH="$HOME/.nvm/versions/node/v22.17.1/bin:$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
+if [ -n "$NVM_NODE_PATH" ]; then
+    export PATH="$NVM_NODE_PATH:$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
+else
+    export PATH="$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
+fi
 
 # 保存上次目录的配置文件
 LAST_DIR_FILE="$HOME/.claude-code-now-last-dir"
