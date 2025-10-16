@@ -51,8 +51,9 @@ else
     export PATH="$HOME/.npm-global/bin:$HOME/.npm/bin:$HOME/Library/pnpm:$HOME/.local/bin:$HOME/.cargo/bin:/usr/local/bin:/opt/homebrew/bin:/usr/local/share/npm/bin:$PATH"
 fi
 
-# 保存上次目录的配置文件
+# 配置文件
 LAST_DIR_FILE="$HOME/.claude-code-now-last-dir"
+TERMINAL_CONFIG_FILE="$HOME/.claude-code-now-terminal"
 
 # If no parameter provided, try to get current Finder path
 if [ -z "$TARGET_DIR" ]; then
@@ -111,17 +112,54 @@ fi
 # 保存当前目录，供下次使用
 echo "$TARGET_DIR" > "$LAST_DIR_FILE"
 
-# Launch iTerm (preferred) or Terminal and run Claude Code in specified directory
-if [ -d "/Applications/iTerm.app" ] || [ -d "/Applications/iTerm 2.app" ]; then
-    # Use iTerm if available
-    if [ -d "/Applications/iTerm 2.app" ]; then
-        ITERM_APP="iTerm 2"
-    else
-        ITERM_APP="iTerm"
-    fi
+# 读取用户终端偏好设置
+PREFERRED_TERMINAL=""
+if [ -f "$TERMINAL_CONFIG_FILE" ]; then
+    PREFERRED_TERMINAL=$(cat "$TERMINAL_CONFIG_FILE" 2>/dev/null | tr -d '\n\r')
+fi
 
-    osascript <<EOF
-tell application "$ITERM_APP"
+# 检测可用的终端应用
+detect_terminal_app() {
+    case "$1" in
+        "iTerm2"|"iterm2"|"iTerm"|"iterm")
+            if [ -d "/Applications/iTerm.app" ]; then
+                echo "iTerm"
+            elif [ -d "/Applications/iTerm 2.app" ]; then
+                echo "iTerm 2"
+            else
+                echo ""
+            fi
+            ;;
+        "Terminal"|"terminal")
+            echo "Terminal"
+            ;;
+        "Warp"|"warp")
+            if [ -d "/Applications/Warp.app" ]; then
+                echo "Warp"
+            else
+                echo ""
+            fi
+            ;;
+        "Alacritty"|"alacritty")
+            if [ -d "/Applications/Alacritty.app" ]; then
+                echo "Alacritty"
+            else
+                echo ""
+            fi
+            ;;
+        *)
+            echo ""
+            ;;
+    esac
+}
+
+# 启动终端的函数
+launch_terminal() {
+    local terminal_app="$1"
+    case "$terminal_app" in
+        "iTerm"|"iTerm 2")
+            osascript <<EOF
+tell application "$terminal_app"
     activate
     create window with default profile
     tell current session of current window
@@ -129,12 +167,58 @@ tell application "$ITERM_APP"
     end tell
 end tell
 EOF
-else
-    # Fallback to Terminal
-    osascript <<EOF
+            ;;
+        "Warp")
+            osascript <<EOF
+tell application "Warp"
+    activate
+    tell application "System Events"
+        keystroke "t" using {command down}
+        delay 0.2
+        keystroke "cd " & quoted form of "$TARGET_DIR" & " && claude --permission-mode bypassPermissions"
+        keystroke return
+    end tell
+end tell
+EOF
+            ;;
+        "Alacritty")
+            # Alacritty 需要通过命令行启动
+            open -a Alacritty --args --working-directory "$TARGET_DIR" -e bash -c "claude --permission-mode bypassPermissions; exec bash"
+            ;;
+        *)
+            # 默认使用 Terminal
+            osascript <<EOF
 tell application "Terminal"
     activate
     do script "cd " & quoted form of "$TARGET_DIR" & " && claude --permission-mode bypassPermissions"
 end tell
 EOF
+            ;;
+    esac
+}
+
+# 决定使用哪个终端应用
+TERMINAL_TO_USE=""
+
+# 1. 优先使用用户配置的终端
+if [ -n "$PREFERRED_TERMINAL" ]; then
+    DETECTED_TERMINAL=$(detect_terminal_app "$PREFERRED_TERMINAL")
+    if [ -n "$DETECTED_TERMINAL" ]; then
+        TERMINAL_TO_USE="$DETECTED_TERMINAL"
+    fi
 fi
+
+# 2. 如果用户配置的终端不可用，使用默认优先级
+if [ -z "$TERMINAL_TO_USE" ]; then
+    # 按优先级检测：iTerm2 > Warp > Terminal
+    for app in "iTerm2" "Warp" "Terminal"; do
+        DETECTED_TERMINAL=$(detect_terminal_app "$app")
+        if [ -n "$DETECTED_TERMINAL" ]; then
+            TERMINAL_TO_USE="$DETECTED_TERMINAL"
+            break
+        fi
+    done
+fi
+
+# 启动终端
+launch_terminal "$TERMINAL_TO_USE"

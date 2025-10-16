@@ -33,6 +33,33 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
 
 ## Version Changelog
 
+### v1.3.1 (2025-10-16) - Terminal Configuration Support
+- **Feature**: Added configurable terminal application support
+- **Issue**: Users reported iTerm2 not being used despite being installed
+- **Solution**: Enhanced terminal detection with user preference configuration
+- **New Features**:
+  - User configurable terminal preference via `~/.claude-code-now-terminal` config file
+  - Support for iTerm2, Warp, Alacritty, and Terminal
+  - Improved detection logic for modern iTerm2 installations
+  - Configuration tool: `set-terminal.sh` for easy terminal preference setup
+- **Detection Priority**: User preference → iTerm2 → Warp → Terminal (fallback)
+- **Files Modified**: 
+  - `Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher` (lines 54-224)
+  - Added: `set-terminal.sh` (terminal configuration utility)
+- **Usage**: Run `./set-terminal.sh` to configure preferred terminal
+
+### v1.3.0 (2025-10-11) - Dynamic Node.js Detection
+- **PR #5**: Merged from lemon-codehub/feature/dynamic-nvm-detection
+- **Core Change**: Replace hardcoded Node.js path (v22.17.1) with intelligent dynamic detection
+- **Detection Priority**:
+  1. Current active nvm version (`nvm current`)
+  2. Default nvm alias version (`nvm alias default`)
+  3. Latest installed version (auto-detect from `~/.nvm/versions/node/`)
+- **Benefits**: Zero configuration, auto-adapts to user's Node.js version
+- **Compatibility**: Works with both nvm and non-nvm environments
+- **File Modified**: `Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher` (lines 17-52)
+- **Homebrew Formula**: Updated to v1.3.0 with new sha256
+
 ### v1.2.1 (2024-09-30) - CLI Path Detection Enhancement
 - Extended PATH search: added `~/.npm/bin`, `~/.local/bin`, `/usr/local/share/npm/bin`
 - Smart traversal of common install locations, find even if PATH not configured
@@ -48,3 +75,17 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
 ### v1.1.0 and Earlier
 - Basic features: Dock launch, drag launch, toolbar integration
 - Chinese/English docs, GitHub Pages, custom domain
+
+## GitHub Repository Settings
+
+### Branch Protection (2025-10-11)
+- **Repository**: orange2ai/claude-code-now
+- **Ruleset Name**: high
+- **Protected Branch**: main
+- **Status**: Active
+- **Rules Configured**:
+  - Require pull request before merging (no direct push to main)
+  - Block force pushes (prevent git push --force)
+  - Prevent branch deletion (cannot delete main branch)
+- **View**: https://github.com/orange2ai/claude-code-now/rules/8809548
+- **Purpose**: Protect main branch from accidental damage, ensure code review process
