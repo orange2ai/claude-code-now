@@ -33,6 +33,23 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
 
 ## Version Changelog
 
+### v1.4.0 (2025-10-16) - Windows Support Integration
+- **Major Feature**: Merged Windows support from `windows` branch into main
+- **Cross-Platform**: Now supports both macOS and Windows with unified experience
+- **Windows Features**:
+  - PowerShell launcher script (`claude-code-now.ps1`)
+  - Automated installation script (`install.bat`)
+  - Right-click context menu integration (`install-context-menu.bat`)
+  - Easy uninstallation (`uninstall-context-menu.bat`)
+  - PATH detection for Windows Node.js installations
+- **Documentation**: Updated README.md with comprehensive Windows installation guide
+- **Compatibility**: Maintains all existing macOS functionality
+- **Files Added**: 
+  - `claude-code-now.ps1` (Windows PowerShell launcher)
+  - `install.bat` (Windows installation script)
+  - `install-context-menu.bat` (Right-click menu installer)
+  - `uninstall-context-menu.bat` (Right-click menu uninstaller)
+
 ### v1.3.1 (2025-10-16) - Terminal Configuration Support
 - **Feature**: Added configurable terminal application support
 - **Issue**: Users reported iTerm2 not being used despite being installed
