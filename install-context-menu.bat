@@ -19,13 +19,27 @@ if %errorLevel% neq 0 (
 )
 
 REM 检查 PowerShell 脚本是否存在
+echo 🔍 检查 PowerShell 脚本...
+echo 📁 检查路径: %USERPROFILE%\bin\claude-code-now.ps1
+
 if not exist "%USERPROFILE%\bin\claude-code-now.ps1" (
     echo ❌ 未找到 claude-code-now.ps1
+    echo.
+    echo 🔍 诊断信息:
+    echo   📁 用户bin目录: %USERPROFILE%\bin
+    if exist "%USERPROFILE%\bin" (
+        echo   ✅ bin目录存在
+        dir "%USERPROFILE%\bin" /b
+    ) else (
+        echo   ❌ bin目录不存在
+    )
     echo.
     echo 💡 请先运行 install.bat 进行基础安装
     pause
     exit /b 1
 )
+
+echo ✅ PowerShell 脚本文件存在
 
 echo 📝 正在添加右键菜单...
 echo.

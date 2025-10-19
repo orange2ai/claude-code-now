@@ -106,3 +106,50 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
   - Prevent branch deletion (cannot delete main branch)
 - **View**: https://github.com/orange2ai/claude-code-now/rules/8809548
 - **Purpose**: Protect main branch from accidental damage, ensure code review process
+
+### v1.5.0 (2025-10-19) - API Configuration Switcher
+- **Major Feature**: Added complete API configuration switcher tool
+- **New Components**:
+  - `config-switcher/Claude Config Switcher.app` - Native macOS application
+  - `config-switcher/claude-config-switcher.sh` - Shell script for CLI usage
+  - `config-switcher/keys.template` - Secure API key template
+  - `config-switcher/launch-app.sh` - Backup launcher utility
+- **Core Functionality**:
+  - Support for Zhipu AI (GLM), Anthropic Official, Custom APIs
+  - Automatic API key management with local storage
+  - First-time setup wizard with guided configuration
+  - Secure template system with `.gitignore` protection
+- **Technical Implementation**:
+  - Solved macOS bash compatibility (removed associative arrays)
+  - Implemented AppleScript integration for Terminal launching
+  - Created intelligent key detection and validation
+  - Added multi-launch support with fallback mechanisms
+- **User Experience**:
+  - Professional macOS app with custom icon
+  - One-click API configuration switching
+  - Colorful terminal output with clear status indicators
+  - Comprehensive setup wizard for first-time users
+- **Security Features**:
+  - Local-only key storage (never uploaded)
+  - Template-based system for open-source safety
+  - Automatic backup of existing configurations
+  - Input validation with masked key display
+- **Documentation Updates**:
+  - Updated all README files (EN, ZH, JA) with config switcher section
+  - Created detailed troubleshooting guide
+  - Added comprehensive installation instructions
+  - Enhanced project structure documentation
+- **Release Preparation**:
+  - Version bump to 1.5.0 across all components
+  - Created `RELEASE_NOTES_v1.5.0.md` with detailed changelog
+  - Organized clean project structure for distribution
+  - Automated release script with validation
+- **Product Philosophy Achievement**:
+  - **Simple**: Evolved from complex multi-file tools to single .app solution
+  - **Focused**: Dedicated to solving API configuration switching pain point
+  - **Ultimate**: One-click switch, 3-step configuration process
+- **Market Impact**:
+  - China users: Stable Zhipu AI access without manual configuration
+  - Developers: Rapid switching between different API services
+  - Enterprise users: Secure key management for teams
+  - Open source community: Safe code sharing without exposing secrets

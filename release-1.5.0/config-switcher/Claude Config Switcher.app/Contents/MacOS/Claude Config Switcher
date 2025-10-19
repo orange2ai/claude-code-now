@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Claude Config Switcher - macOS应用程序主脚本
+# 作者: orange
+
+# 获取应用程序所在目录
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../Resources" && pwd)"
+
+# 使用AppleScript打开Terminal并运行脚本
+osascript <<EOF
+tell application "Terminal"
+    activate
+    do script "cd '$SCRIPT_DIR' && ./快速切换配置.command"
+end tell
+EOF

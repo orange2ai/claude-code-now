@@ -65,11 +65,42 @@ if not exist "%USERPROFILE%\bin" mkdir "%USERPROFILE%\bin"
 REM 复制 PowerShell 脚本
 echo.
 echo 📝 复制启动脚本到 %USERPROFILE%\bin...
-copy /Y "%SCRIPT_DIR%claude-code-now.ps1" "%USERPROFILE%\bin\claude-code-now.ps1" >nul
+echo 🔍 源文件: %SCRIPT_DIR%claude-code-now.ps1
+echo 🎯 目标文件: %USERPROFILE%\bin\claude-code-now.ps1
+
+if not exist "%SCRIPT_DIR%claude-code-now.ps1" (
+    echo ❌ 源文件不存在: %SCRIPT_DIR%claude-code-now.ps1
+    echo 💡 请确保 claude-code-now.ps1 文件在当前目录中
+    pause
+    exit /b 1
+)
+
+copy /Y "%SCRIPT_DIR%claude-code-now.ps1" "%USERPROFILE%\bin\claude-code-now.ps1"
+if %errorLevel% neq 0 (
+    echo ❌ 复制失败
+    echo 💡 请检查文件权限和磁盘空间
+    pause
+    exit /b 1
+)
+
+if not exist "%USERPROFILE%\bin\claude-code-now.ps1" (
+    echo ❌ 复制后文件不存在
+    pause
+    exit /b 1
+)
+
+echo ✅ PowerShell 脚本复制成功
 
 REM 创建批处理包装器，方便从命令行调用
+echo 📝 创建批处理包装器...
 echo @echo off > "%USERPROFILE%\bin\claude-code-now.bat"
 echo powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\bin\claude-code-now.ps1" %%* >> "%USERPROFILE%\bin\claude-code-now.bat"
+
+if not exist "%USERPROFILE%\bin\claude-code-now.bat" (
+    echo ❌ 批处理包装器创建失败
+    pause
+    exit /b 1
+)
 
 echo ✅ 启动脚本已安装
 
