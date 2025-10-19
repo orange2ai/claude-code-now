@@ -116,10 +116,15 @@ git clone https://github.com/orange2ai/claude-code-now.git
 cp -r "Claude Code Now.app" /Applications/
 ```
 
-**Method 3: Homebrew**
+**Method 3: Command Line Installation**
+
 ```bash
-brew tap orange2ai/claude-code-now
-brew install claude-code-now
+# Download script
+curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/claude-code-now.sh -o claude-code-now
+chmod +x claude-code-now
+
+# Move to system path
+sudo mv claude-code-now /usr/local/bin/
 ```
 
 #### Step 3: Start Using
