@@ -7,7 +7,7 @@
 # 3. 脚本会自动读取这些密钥
 
 # 智谱AI配置
-ZHIPU_API_KEY="72280f05e2d5430b8ae27f39b8e1f7b3.dvWRPwUVeggxF78P"
+ZHIPU_API_KEY="your_zhipu_api_key_here"
 ZHIPU_BASE_URL="https://open.bigmodel.cn/api/anthropic"
 
 # Anthropic官方配置
