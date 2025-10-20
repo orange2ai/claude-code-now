@@ -38,6 +38,22 @@ Auto-skip permission dialogs, truly one-click launch.
 
 Save 5 minutes daily, save 30 hours annually.
 
+## 🧠 The Power of Context
+
+**Why launch Claude Code in different folders?** Because **CONTEXT is everything!**
+
+Claude Code delivers its best results when it has the right context. Whether you're:
+- 📊 **Analyzing data** in your research folder
+- 💻 **Writing code** in your project directory  
+- 📝 **Processing documents** in your reports folder
+- 🎨 **Managing creative work** in your design folder
+
+**Each context gives Claude Code superpowers.**
+
+That's why you need Claude Code Now **everywhere** - place the launcher in every important folder and launch instantly with perfect context.
+
+**Trust us: Once you experience context-aware Claude Code, you'll never go back to context-less AI again.**
+
 ## ✨ Features
 
 ### 🖥 Dock Launch (macOS)
