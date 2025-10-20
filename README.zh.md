@@ -52,6 +52,14 @@ Claude Code只有在正确的Context下才能发挥最佳效果。无论你是�
 
 **相信我：体验过Context感知的Claude Code后，你绝对回不去没有Context的AI了。**
 
+---
+
+⭐ **喜欢这个工具？给个Star吧！** ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
+
+---
+
 ## ✨ 核心特性
 
 ### 🖥 程序坞启动 (macOS)
@@ -177,9 +185,13 @@ Claude Code Now/
 
 ## 👨‍💼 关于作者
 
-orange 制作，专注极简产品。
+**Orange** 制作，**[ListenHub.AI](https://listenhub.ai)** CEO 🎧
+
+**ListenHub.AI** - 使用AI将任何内容转换为引人入胜的播客。非常适合学习、内容创作和无障碍访问。
 
 理念：**预测 → 单点击穿 → All-in**
+
+*专注于解决真实问题的极简产品设计。*
 
 ## ⭐ Star History
 

@@ -52,6 +52,14 @@ Claude Codeは適切なコンテキストがあってこそ最高の結果を発
 
 **信じてください：コンテキスト対応のClaude Codeを体験したら、もうコンテキストなしのAIには戻れません。**
 
+---
+
+⭐ **このツールが気に入ったら、Starをお願いします！** ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
+
+---
+
 ## ✨ 主要機能
 
 ### 🖥 Dock 起動 (macOS)
@@ -177,9 +185,13 @@ Claude Code Now/
 
 ## 👨‍💼 作者について
 
-orange 制作、ミニマル製品に特化。
+**Orange** 制作、**[ListenHub.AI](https://listenhub.ai)** CEO 🎧
+
+**ListenHub.AI** - AIを使用して任意のコンテンツを魅力的なポッドキャストに変換。学習、コンテンツ作成、アクセシビリティに最適。
 
 理念：**予測 → 単点突破 → All-in**
+
+*実際の問題を解決するミニマル製品設計に特化。*
 
 ## ⭐ Star History
 
