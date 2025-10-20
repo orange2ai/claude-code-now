@@ -38,50 +38,49 @@ Auto-skip permission dialogs, truly one-click launch.
 
 Save 5 minutes daily, save 30 hours annually.
 
-## ✨ Solution
+## ✨ Features
 
 ### 🖥 Dock Launch (macOS)
-
 Put the app in Dock, click to launch Claude Code instantly.
 
 ### ⚡ Finder Toolbar Launch (macOS)
-
 Drag the app to Finder toolbar, click to launch in any folder.
 
 ### 📁 Right-Click Launch (Windows)
-
 Right-click on any folder to launch Claude Code Now.
 
-### 📁 Launch from Any Folder
+### 🔧 API Config Switcher
+**One-click API configuration switching** with secure local storage.
 
-Put the APP in any folder, click the icon to launch directly.
-
-That simple.
-
-## 🔧 NEW: Config Switcher
-
-**One-click Claude Code API configuration switching** - Support for Zhipu AI, Anthropic Official, Custom APIs
-
-### 🚀 How to Use
-1. Navigate to `config-switcher/` folder
-2. Double-click `Claude Config Switcher.app` to launch
-3. Select configuration type and enter API key
-4. Done! Configuration switched automatically
-
-### ✨ Supported Configurations
+**Supported APIs:**
 - **Zhipu AI** (GLM) - Best for China users
-- **Anthropic Official** - International users
+- **Anthropic Official** - International users  
 - **Custom API** - Other compatible services
 
-### 🔒 Security Features
-- API keys stored locally and securely
-- Never uploaded anywhere
-- Open-source project friendly
+**Security:** API keys stored locally, never uploaded anywhere.
 
-> 📍 **Location**: `config-switcher/Claude Config Switcher.app`
+**Usage:** Navigate to `config-switcher/Claude Config Switcher.app`
+
+### 📁 Universal Launch
+Put the APP in any folder, click the icon to launch directly.
+
+**That simple.**
 
 
 ## ⚡ Quick Start
+
+### 🚀 One-Line Install (Recommended)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/install.sh | bash
+```
+
+**That's it!** This single command will:
+- ✅ Download the latest version automatically
+- ✅ Install to Applications folder
+- ✅ Create working directory
+- ✅ Set proper permissions
+- ✅ Show usage instructions
 
 ### macOS
 
@@ -219,12 +218,12 @@ Claude Code Now/
 ├── 🖥 Claude Code Now.app        # macOS app
 ├── 🔧 config-switcher/          # NEW: Config Switcher
 │   └── Claude Config Switcher.app # API configuration tool
+├── install.sh                   # Smart one-line installer
 ├── claude-code-now.sh           # macOS launch script
 ├── claude-code-now.ps1          # Windows PowerShell script
 ├── install.bat                  # Windows installation script
 ├── install-context-menu.bat     # Windows right-click menu installer
 ├── uninstall-context-menu.bat   # Windows right-click menu uninstaller
-├── claude-code-now.rb           # Homebrew install
 └── 📚 Documentation
 ```
 

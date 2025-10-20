@@ -36,45 +36,48 @@ Claude Code は素晴らしいツールですが、起動が面倒：
 
 毎日 5分節約、年間 30時間を取り戻します。
 
-## ✨ ソリューション
+## ✨ 主要機能
 
-### 🖥 Dock から起動
-
+### 🖥 Dock 起動 (macOS)
 アプリを Dock に配置、クリックで Claude Code が起動。
 
-### ⚡ Finder ツールバーから起動
-
+### ⚡ Finder ツールバー起動 (macOS)
 アプリを Finder ツールバーにドラッグ、任意のフォルダでクリックして起動。
 
-### 📁 任意のフォルダから起動
+### 📁 右クリック起動 (Windows)
+任意のフォルダで右クリック、"Claude Code Now" を選択して起動。
 
-アプリをどこにでも配置、アイコンをクリックで直接起動。
+### 🔧 API設定スイッチャー
+**ワンクリックAPI設定切り替え**、ローカル安全保存。
 
-とてもシンプルです。
-
-## 🔧 新機能：設定スイッチャー
-
-**ワンクリックで Claude Code API 設定を切り替え** - Zhipu AI、Anthropic 公式、カスタム API に対応
-
-### 🚀 使用方法
-1. `config-switcher/` フォルダに移動
-2. `Claude Config Switcher.app` をダブルクリックして起動
-3. 設定タイプを選択し、API キーを入力
-4. 完了！設定が自動的に切り替わります
-
-### ✨ 対応設定
+**対応API：**
 - **Zhipu AI** (GLM) - 中国国内ユーザー向け
 - **Anthropic 公式** - 海外ユーザー向け
 - **カスタム API** - その他互換サービス
 
-### 🔒 セキュリティ機能
-- API キーはローカルで安全に保存
-- どこにもアップロードされません
-- オープンソースプロジェクトに友好
+**セキュリティ：** API キーはローカル保存、アップロードされません。
 
-> 📍 **場所**: `config-switcher/Claude Config Switcher.app`
+**使用方法：** `config-switcher/Claude Config Switcher.app` に移動
+
+### 📁 ユニバーサル起動
+アプリをどこにでも配置、アイコンをクリックで直接起動。
+
+**とてもシンプルです。**
 
 ## ⚡ クイックスタート
+
+### 🚀 ワンラインインストール（推奨）
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/install.sh | bash
+```
+
+**これだけです！** このコマンドで自動的に：
+- ✅ 最新バージョンを自動ダウンロード
+- ✅ Applications フォルダにインストール
+- ✅ 作業ディレクトリを作成
+- ✅ 適切な権限を設定
+- ✅ 使用方法を表示
 
 ### ステップ1：作業フォルダの準備
 `書類` に `Claude Code` フォルダを作成：
@@ -152,7 +155,7 @@ Claude Code Now/
 ├── 🔧 config-switcher/          # 新機能：設定スイッチャー
 │   └── Claude Config Switcher.app # API設定切り替えツール
 ├── claude-code-now.sh           # 起動スクリプト
-├── claude-code-now.rb           # Homebrew インストール
+├── install.sh                   # スマートワンラインインストーラー
 └── 📚 ドキュメント
 ```
 
