@@ -65,7 +65,6 @@ That's why you need Claude Code Now **everywhere** - place the launcher in every
 ## ✨ Features
 
 ### 🖥 Dock Launch (macOS)
-
 Put the app in Dock, click to launch Claude Code instantly.
 
 ### ⚡ Finder Toolbar Launch (macOS)
