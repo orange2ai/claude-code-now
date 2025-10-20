@@ -36,6 +36,30 @@ Claude Code 很好用，但启动麻烦：
 
 每天帮你节省 5 分钟，一年帮你节省 30 个小时。
 
+## 🧠 Context的威力
+
+**为什么要在不同文件夹启动Claude Code？** 因为**Context（上下文）就是一切！**
+
+Claude Code只有在正确的Context下才能发挥最佳效果。无论你是：
+- 📊 **分析数据** - 在研究文件夹中
+- 💻 **编写代码** - 在项目目录中
+- 📝 **处理文档** - 在报告文件夹中
+- 🎨 **创意工作** - 在设计文件夹中
+
+**每个Context都让Claude Code拥有超能力。**
+
+这就是为什么你需要在**每个重要文件夹**都放一个Claude Code Now启动器，随时以完美Context启动。
+
+**相信我：体验过Context感知的Claude Code后，你绝对回不去没有Context的AI了。**
+
+---
+
+⭐ **喜欢这个工具？给个Star吧！** ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
+
+---
+
 ## ✨ 核心特性
 
 ### 🖥 程序坞启动 (macOS)
@@ -161,9 +185,13 @@ Claude Code Now/
 
 ## 👨‍💼 关于作者
 
-orange 制作，专注极简产品。
+**Orange** 制作，**[ListenHub.AI](https://listenhub.ai)** CEO 🎧
+
+**ListenHub.AI** - 使用AI将任何内容转换为引人入胜的播客。非常适合学习、内容创作和无障碍访问。
 
 理念：**预测 → 单点击穿 → All-in**
+
+*专注于解决真实问题的极简产品设计。*
 
 ## ⭐ Star History
 

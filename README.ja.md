@@ -36,6 +36,30 @@ Claude Code は素晴らしいツールですが、起動が面倒：
 
 毎日 5分節約、年間 30時間を取り戻します。
 
+## 🧠 コンテキストの力
+
+**なぜ異なるフォルダでClaude Codeを起動するのか？** **コンテキストがすべて**だからです！
+
+Claude Codeは適切なコンテキストがあってこそ最高の結果を発揮します。例えば：
+- 📊 **データ分析** - 研究フォルダで
+- 💻 **コード作成** - プロジェクトディレクトリで  
+- 📝 **文書処理** - レポートフォルダで
+- 🎨 **クリエイティブ作業** - デザインフォルダで
+
+**各コンテキストがClaude Codeにスーパーパワーを与えます。**
+
+だからこそ**重要なフォルダすべて**にClaude Code Nowランチャーを配置し、完璧なコンテキストで瞬時に起動する必要があるのです。
+
+**信じてください：コンテキスト対応のClaude Codeを体験したら、もうコンテキストなしのAIには戻れません。**
+
+---
+
+⭐ **このツールが気に入ったら、Starをお願いします！** ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
+
+---
+
 ## ✨ 主要機能
 
 ### 🖥 Dock 起動 (macOS)
@@ -161,9 +185,13 @@ Claude Code Now/
 
 ## 👨‍💼 作者について
 
-orange 制作、ミニマル製品に特化。
+**Orange** 制作、**[ListenHub.AI](https://listenhub.ai)** CEO 🎧
+
+**ListenHub.AI** - AIを使用して任意のコンテンツを魅力的なポッドキャストに変換。学習、コンテンツ作成、アクセシビリティに最適。
 
 理念：**予測 → 単点突破 → All-in**
+
+*実際の問題を解決するミニマル製品設計に特化。*
 
 ## ⭐ Star History
 

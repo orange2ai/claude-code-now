@@ -38,6 +38,30 @@ Auto-skip permission dialogs, truly one-click launch.
 
 Save 5 minutes daily, save 30 hours annually.
 
+## 🧠 The Power of Context
+
+**Why launch Claude Code in different folders?** Because **CONTEXT is everything!**
+
+Claude Code delivers its best results when it has the right context. Whether you're:
+- 📊 **Analyzing data** in your research folder
+- 💻 **Writing code** in your project directory  
+- 📝 **Processing documents** in your reports folder
+- 🎨 **Managing creative work** in your design folder
+
+**Each context gives Claude Code superpowers.**
+
+That's why you need Claude Code Now **everywhere** - place the launcher in every important folder and launch instantly with perfect context.
+
+**Trust us: Once you experience context-aware Claude Code, you'll never go back to context-less AI again.**
+
+---
+
+⭐ **Love this tool? Give it a star!** ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
+
+---
+
 ## ✨ Features
 
 ### 🖥 Dock Launch (macOS)
@@ -191,6 +215,18 @@ uninstall-context-menu.bat
 4. **PowerShell policy**: Run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 
+## 👨‍💼 About Author
+
+Made by **Orange**, CEO of **[ListenHub.AI](https://listenhub.ai)** 🎧
+
+**ListenHub.AI** - Transform any content into engaging podcasts using AI. Perfect for learning, content creation, and accessibility.
+
+Philosophy: **Predict → Single Point Breakthrough → All-in**
+
+*Focused on minimal product design that solves real problems.*
+
+---
+
 ## 💡 Design Philosophy
 
 **Simple**: Focus on one thing, do it perfectly.
@@ -226,12 +262,6 @@ Claude Code Now/
 ├── uninstall-context-menu.bat   # Windows right-click menu uninstaller
 └── 📚 Documentation
 ```
-
-## 👨‍💼 About Author
-
-Made by orange, focused on minimal product design.
-
-Philosophy: **Predict → Single Point Breakthrough → All-in**
 
 ## ⭐ Star History
 
