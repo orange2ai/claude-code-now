@@ -28,6 +28,30 @@ is_key_set() {
     fi
 }
 
+# 验证密钥文件安全性
+validate_keys_file() {
+    local file="$1"
+    
+    # 检查文件是否存在
+    if [[ ! -f "$file" ]]; then
+        return 1
+    fi
+    
+    # 检查文件内容只包含变量赋值，防止代码注入
+    while IFS= read -r line; do
+        # 跳过空行和注释
+        [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+        
+        # 检查是否为有效的变量赋值格式
+        if ! [[ "$line" =~ ^[A-Z_][A-Z0-9_]*=\"[^\"]*\"$ ]]; then
+            echo -e "${RED}❌ 密钥文件包含无效内容，安全检查失败${NC}" >&2
+            return 1
+        fi
+    done < "$file"
+    
+    return 0
+}
+
 # 首次设置密钥
 setup_key() {
     local config_name="$1"
@@ -100,10 +124,13 @@ setup_key() {
         fi
     fi
     
-    # 确保keys.local文件存在
+    # 确保keys.local文件存在并设置安全权限
     local keys_file="$SCRIPT_DIR/keys.local"
     if [[ ! -f "$keys_file" ]]; then
         cp "$SCRIPT_DIR/keys.template" "$keys_file"
+        # 设置严格的文件权限：只有所有者可读写
+        chmod 600 "$keys_file"
+        echo -e "${GREEN}🔒 已设置密钥文件安全权限${NC}"
     fi
     
     # 更新密钥文件
@@ -120,8 +147,14 @@ setup_key() {
     echo -e "${GREEN}✅ 密钥已保存！${NC}"
     echo ""
     
-    # 重新加载密钥
-    source "$keys_file"
+    # 安全验证后重新加载密钥
+    if validate_keys_file "$keys_file"; then
+        source "$keys_file"
+        echo -e "${GREEN}🔒 密钥文件安全验证通过${NC}"
+    else
+        echo -e "${RED}❌ 密钥文件安全验证失败，请检查文件内容${NC}"
+        return 1
+    fi
 }
 
 # 加载本地密钥配置
@@ -129,8 +162,14 @@ load_keys() {
     local keys_file="$SCRIPT_DIR/keys.local"
     
     if [[ -f "$keys_file" ]]; then
-        source "$keys_file"
-        return 0
+        # 安全验证后加载密钥
+        if validate_keys_file "$keys_file"; then
+            source "$keys_file"
+            return 0
+        else
+            echo -e "${RED}❌ 密钥文件安全验证失败，拒绝加载${NC}" >&2
+            return 1
+        fi
     else
         return 1
     fi

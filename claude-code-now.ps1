@@ -70,5 +70,13 @@ Write-Host "✅ 找到 Claude Code: $ClaudePath" -ForegroundColor Green
 # 保存当前目录，供下次使用
 $TargetDir | Out-File -FilePath $LastDirFile -Encoding utf8
 
-# 启动 Claude Code
-& $ClaudePath --permission-mode bypassPermissions
+# 验证 Claude 路径安全性
+if ($ClaudePath -match "claude(\.exe|\.cmd)?$") {
+    Write-Host "🔒 安全验证通过，启动 Claude Code..." -ForegroundColor Green
+    & $ClaudePath --permission-mode bypassPermissions
+} else {
+    Write-Host "❌ 安全验证失败: 检测到无效的 Claude 路径" -ForegroundColor Red
+    Write-Host "🔍 当前路径: $ClaudePath" -ForegroundColor Yellow
+    Write-Host "⚠️  为了安全起见，拒绝执行该路径" -ForegroundColor Yellow
+    exit 1
+}
