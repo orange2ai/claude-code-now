@@ -38,50 +38,73 @@ Auto-skip permission dialogs, truly one-click launch.
 
 Save 5 minutes daily, save 30 hours annually.
 
-## ✨ Solution
+## 🧠 The Power of Context
+
+**Why launch Claude Code in different folders?** Because **CONTEXT is everything!**
+
+Claude Code delivers its best results when it has the right context. Whether you're:
+- 📊 **Analyzing data** in your research folder
+- 💻 **Writing code** in your project directory  
+- 📝 **Processing documents** in your reports folder
+- 🎨 **Managing creative work** in your design folder
+
+**Each context gives Claude Code superpowers.**
+
+That's why you need Claude Code Now **everywhere** - place the launcher in every important folder and launch instantly with perfect context.
+
+**Trust us: Once you experience context-aware Claude Code, you'll never go back to context-less AI again.**
+
+---
+
+⭐ **Love this tool? Give it a star!** ⭐
+
+[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
+
+---
+
+## ✨ Features
 
 ### 🖥 Dock Launch (macOS)
-
 Put the app in Dock, click to launch Claude Code instantly.
 
 ### ⚡ Finder Toolbar Launch (macOS)
-
 Drag the app to Finder toolbar, click to launch in any folder.
 
 ### 📁 Right-Click Launch (Windows)
-
 Right-click on any folder to launch Claude Code Now.
 
-### 📁 Launch from Any Folder
+### 🔧 API Config Switcher
+**One-click API configuration switching** with secure local storage.
 
-Put the APP in any folder, click the icon to launch directly.
-
-That simple.
-
-## 🔧 NEW: Config Switcher
-
-**One-click Claude Code API configuration switching** - Support for Zhipu AI, Anthropic Official, Custom APIs
-
-### 🚀 How to Use
-1. Navigate to `config-switcher/` folder
-2. Double-click `Claude Config Switcher.app` to launch
-3. Select configuration type and enter API key
-4. Done! Configuration switched automatically
-
-### ✨ Supported Configurations
+**Supported APIs:**
 - **Zhipu AI** (GLM) - Best for China users
-- **Anthropic Official** - International users
+- **Anthropic Official** - International users  
 - **Custom API** - Other compatible services
 
-### 🔒 Security Features
-- API keys stored locally and securely
-- Never uploaded anywhere
-- Open-source project friendly
+**Security:** API keys stored locally, never uploaded anywhere.
 
-> 📍 **Location**: `config-switcher/Claude Config Switcher.app`
+**Usage:** Navigate to `config-switcher/Claude Config Switcher.app`
+
+### 📁 Universal Launch
+Put the APP in any folder, click the icon to launch directly.
+
+**That simple.**
 
 
 ## ⚡ Quick Start
+
+### 🚀 One-Line Install (Recommended)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/install.sh | bash
+```
+
+**That's it!** This single command will:
+- ✅ Download the latest version automatically
+- ✅ Install to Applications folder
+- ✅ Create working directory
+- ✅ Set proper permissions
+- ✅ Show usage instructions
 
 ### macOS
 
@@ -116,10 +139,15 @@ git clone https://github.com/orange2ai/claude-code-now.git
 cp -r "Claude Code Now.app" /Applications/
 ```
 
-**Method 3: Homebrew**
+**Method 3: Command Line Installation**
+
 ```bash
-brew tap orange2ai/claude-code-now
-brew install claude-code-now
+# Download script
+curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/claude-code-now.sh -o claude-code-now
+chmod +x claude-code-now
+
+# Move to system path
+sudo mv claude-code-now /usr/local/bin/
 ```
 
 #### Step 3: Start Using
@@ -187,6 +215,18 @@ uninstall-context-menu.bat
 4. **PowerShell policy**: Run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 
+## 👨‍💼 About Author
+
+Made by **Orange**, CEO of **[ListenHub.AI](https://listenhub.ai)** 🎧
+
+**ListenHub.AI** - Transform any content into engaging podcasts using AI. Perfect for learning, content creation, and accessibility.
+
+Philosophy: **Predict → Single Point Breakthrough → All-in**
+
+*Focused on minimal product design that solves real problems.*
+
+---
+
 ## 💡 Design Philosophy
 
 **Simple**: Focus on one thing, do it perfectly.
@@ -214,20 +254,14 @@ Claude Code Now/
 ├── 🖥 Claude Code Now.app        # macOS app
 ├── 🔧 config-switcher/          # NEW: Config Switcher
 │   └── Claude Config Switcher.app # API configuration tool
+├── install.sh                   # Smart one-line installer
 ├── claude-code-now.sh           # macOS launch script
 ├── claude-code-now.ps1          # Windows PowerShell script
 ├── install.bat                  # Windows installation script
 ├── install-context-menu.bat     # Windows right-click menu installer
 ├── uninstall-context-menu.bat   # Windows right-click menu uninstaller
-├── claude-code-now.rb           # Homebrew install
 └── 📚 Documentation
 ```
-
-## 👨‍💼 About Author
-
-Made by orange, focused on minimal product design.
-
-Philosophy: **Predict → Single Point Breakthrough → All-in**
 
 ## ⭐ Star History
 
