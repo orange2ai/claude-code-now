@@ -140,6 +140,26 @@ cp .claude/settings.json .claude/settings_custom.json
 }
 ```
 
+**プリセットテンプレートで簡単設定：**
+
+`config-switcher/presets/` に4つのプリ設定テンプレートを用意：
+
+```bash
+# すべてのプリ設定を ~/.claude/ にコピー
+cd ~/.claude
+cp /path/to/claude-code-now/config-switcher/presets/settings*.json .
+```
+
+または個別にコピー：
+```bash
+cp /path/to/claude-code-now/config-switcher/presets/settings_anthropic.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_kimi.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_zhipu.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_custom.json ~/.claude/
+```
+
+その後、実際のAPIキーでファイルを編集すれば設定スイッチャーが使用可能！
+
 **セキュリティ：** API キーはローカル保存、アップロードされません。
 
 **GUIを使用：** `config-switcher/Claude Config Switcher.app` に移動

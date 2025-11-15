@@ -140,6 +140,26 @@ cp .claude/settings.json .claude/settings_custom.json
 }
 ```
 
+**快速使用预设模板：**
+
+我们在 `config-switcher/presets/` 提供了4个预设配置文件：
+
+```bash
+# 复制所有预设配置到 ~/.claude/
+cd ~/.claude
+cp /path/to/claude-code-now/config-switcher/presets/settings*.json .
+```
+
+或者单独复制：
+```bash
+cp /path/to/claude-code-now/config-switcher/presets/settings_anthropic.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_kimi.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_zhipu.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_custom.json ~/.claude/
+```
+
+然后编辑文件填入你的实际API密钥即可使用配置切换器！
+
 **安全性：** API密钥本地存储，绝不上传。
 
 **使用图形界面：** 进入 `config-switcher/Claude Config Switcher.app`
