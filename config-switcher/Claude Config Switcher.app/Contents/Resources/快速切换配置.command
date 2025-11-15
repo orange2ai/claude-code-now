@@ -27,7 +27,8 @@ echo ""
 echo "📚 可用配置:"
 echo "1. zhipu     - 智谱AI (https://open.bigmodel.cn)"
 echo "2. anthropic - Anthropic官方"
-echo "3. custom    - 自定义配置"
+echo "3. kimi      - 月之暗面 (https://kimi.moonshot.cn)"
+echo "4. custom    - 自定义配置"
 echo ""
 
 # 询问用户选择
@@ -46,6 +47,11 @@ case "$choice" in
         ./claude-config-switcher.sh anthropic
         ;;
     "3")
+        echo "正在切换到Kimi配置..."
+        echo ""
+        ./claude-config-switcher.sh kimi
+        ;;
+    "4")
         echo "正在切换到自定义配置..."
         echo ""
         ./claude-config-switcher.sh custom
