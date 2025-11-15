@@ -29,13 +29,20 @@
 - [ ] 推送标签：`git push origin --tags`
 - [ ] 确认 GitHub Tags 页面显示新标签
 
-### 📦 5. GitHub Release 创建
+### 📦 5. 安装包准备
+- [ ] 创建完整的应用包：`zip -r "Claude.Code.Now.vX.X.X.macOS.zip" "Claude Code Now.app" "config-switcher/" "claude-code-now.sh" "install.sh" "README.md" "README.zh.md" "README.ja.md"`
+- [ ] 生成SHA256校验：`shasum -a 256 "Claude.Code.Now.vX.X.X.macOS.zip" > "Claude.Code.Now.vX.X.X.macOS.zip.sha256"`
+- [ ] 验证包内容完整性
+- [ ] 确认文件大小合理（通常1-3MB）
+
+### 🏷️ 6. GitHub Release 创建
 - [ ] 使用 `gh release create` 创建发布
-- [ ] Release 标题格式正确
-- [ ] Release 说明详细且有价值
+- [ ] **Release标题必须使用英文**（GitHub国际平台规范）
+- [ ] **Release说明必须使用英文**（专业性和国际化）
+- [ ] 包含完整的应用包和校验文件
 - [ ] 设置为 `--latest` 最新版本
 
-### 🔄 6. 最终验证 ⚠️ **关键**
+### 🔄 7. 最终验证 ⚠️ **关键**
 - [ ] **GitHub 仓库主页显示最新 README**
 - [ ] **GitHub Releases 页面显示新版本**
 - [ ] **所有语言的 README 都已更新**
@@ -194,3 +201,123 @@ echo "✅ 验证完成"
 ---
 
 **遵循这个规范，确保每次发布都完美无缺！** 🎯
+
+---
+
+## 📦 安装包规范
+
+### 🎯 包命名规范
+```
+Claude.Code.Now.v[版本号].[平台].zip
+```
+
+**示例：**
+- `Claude.Code.Now.v1.5.4.macOS.zip`
+- `Claude.Code.Now.v1.5.4.Windows.zip`
+
+### 📁 包内容标准
+**macOS包必须包含：**
+- `Claude Code Now.app` - 主启动器应用
+- `config-switcher/` - 完整的配置切换器目录
+  - `Claude Config Switcher.app`
+  - 相关脚本和模板文件
+- `claude-code-now.sh` - 命令行脚本
+- `install.sh` - 自动安装脚本
+- `README.md` - 英文文档
+- `README.zh.md` - 中文文档  
+- `README.ja.md` - 日文文档
+
+### 🔐 安全验证
+```bash
+# 创建包
+zip -r "Claude.Code.Now.v1.5.4.macOS.zip" "Claude Code Now.app" "config-switcher/" "claude-code-now.sh" "install.sh" "README.md" "README.zh.md" "README.ja.md"
+
+# 生成校验
+shasum -a 256 "Claude.Code.Now.v1.5.4.macOS.zip" > "Claude.Code.Now.v1.5.4.macOS.zip.sha256"
+```
+
+---
+
+## 📝 GitHub Release 规范
+
+### 🌐 语言要求
+- **标题：** 必须使用英文（GitHub国际平台）
+- **描述：** 必须使用英文（专业性和可读性）
+- **标签：** 使用语义化版本（v1.x.x）
+
+### 📋 Release Notes 模板
+
+```markdown
+## ✨ v1.X.X - [Release Name]
+
+### 🎯 Key Updates
+
+**[主要功能类别]**
+- ⭐ **[功能名称]** - 功能描述
+- 🎯 **[改进名称]** - 改进描述
+
+### 📊 User Experience
+
+**Before:** [改进前的情况]
+**After:** [改进后的情况]
+
+### 🎯 Expected Impact
+
+**📈 [影响类别]**
+- 具体影响描述1
+- 具体影响描述2
+
+### 🛠 Technical Improvements
+
+- 📝 技术改进1
+- 🎯 技术改进2
+
+### 💡 Product Philosophy
+
+[体现的产品理念和价值]
+
+---
+
+## 📦 What's Included
+
+- 🖥 **Claude Code Now.app** - Main launcher application
+- 🔧 **Claude Config Switcher.app** - API configuration switcher
+- 📜 **Installation Scripts** - Automated setup tools
+- 🌐 **Multi-language Documentation** - English, Chinese, Japanese
+
+## 🔐 Security
+
+**SHA256 Checksum:**
+```
+[SHA256值]
+```
+
+---
+
+🔗 **Project Link:** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
+```
+
+### 🚀 Release 命令模板
+
+```bash
+# 1. 准备版本
+VERSION="v1.5.4"
+git tag $VERSION
+git push origin $VERSION
+
+# 2. 创建包
+zip -r "Claude.Code.Now.$VERSION.macOS.zip" "Claude Code Now.app" "config-switcher/" "claude-code-now.sh" "install.sh" "README.md" "README.zh.md" "README.ja.md"
+shasum -a 256 "Claude.Code.Now.$VERSION.macOS.zip" > "Claude.Code.Now.$VERSION.macOS.zip.sha256"
+
+# 3. 发布Release
+gh release create $VERSION \
+  --title "🎯 $VERSION - [Release Name]" \
+  --notes-file release-notes.md \
+  --latest \
+  "Claude.Code.Now.$VERSION.macOS.zip" \
+  "Claude.Code.Now.$VERSION.macOS.zip.sha256"
+```
+
+---
+
+**遵循这个规范，确保每次发布都专业且完整！** 🎯
