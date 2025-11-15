@@ -73,6 +73,12 @@ setup_key() {
             prompt_text="Anthropic官方"
             default_url="https://api.anthropic.com"
             ;;
+        "kimi")
+            key_var_name="KIMI_API_KEY"
+            url_var_name="KIMI_BASE_URL"
+            prompt_text="月之暗面 (Kimi)"
+            default_url="https://api.moonshot.cn/v1"
+            ;;
         "custom")
             key_var_name="CUSTOM_API_KEY"
             url_var_name="CUSTOM_BASE_URL"
@@ -107,7 +113,8 @@ setup_key() {
     # 输入Base URL（如果不是自定义配置）
     if [[ "$config_name" != "custom" ]]; then
         echo ""
-        echo -e "${YELLOW}Base URL (默认: $default_url):${NC}"
+        echo -e "${GREEN}✅ Base URL 将使用默认值: $default_url${NC}"
+        echo -e "${YELLOW}如需自定义请输入，否则直接按回车使用默认值:${NC}"
         read -p "> " base_url
         
         if [[ -z "$base_url" ]]; then
@@ -201,6 +208,21 @@ get_config() {
     }
 }"
             ;;
+        "kimi")
+            echo "{
+    \"env\": {
+        \"ANTHROPIC_AUTH_TOKEN\": \"${KIMI_API_KEY:-your_kimi_api_key}\",
+        \"ANTHROPIC_BASE_URL\": \"${KIMI_BASE_URL:-https://api.moonshot.cn/anthropic}\",
+        \"ANTHROPIC_MODEL\": \"kimi-k2-thinking-turbo\",
+        \"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"kimi-k2-thinking-turbo\",
+        \"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"kimi-k2-thinking-turbo\",
+        \"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"kimi-k2-thinking-turbo\",
+        \"CLAUDE_CODE_SUBAGENT_MODEL\": \"kimi-k2-thinking-turbo\",
+        \"API_TIMEOUT_MS\": \"${API_TIMEOUT_MS:-300000}\",
+        \"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC\": 1
+    }
+}"
+            ;;
         "custom")
             echo "{
     \"env\": {
@@ -242,7 +264,8 @@ show_configs() {
     echo -e "${BLUE}📚 可用配置:${NC}"
     echo "1. zhipu     - 智谱AI (https://open.bigmodel.cn)"
     echo "2. anthropic - Anthropic官方"
-    echo "3. custom    - 自定义配置"
+    echo "3. kimi      - 月之暗面 (https://kimi.moonshot.cn)"
+    echo "4. custom    - 自定义配置"
 }
 
 # 备份当前配置
@@ -273,6 +296,9 @@ apply_config() {
             ;;
         "anthropic")
             key_var_name="ANTHROPIC_API_KEY"
+            ;;
+        "kimi")
+            key_var_name="KIMI_API_KEY"
             ;;
         "custom")
             key_var_name="CUSTOM_API_KEY"
@@ -315,7 +341,7 @@ interactive_mode() {
         "q"|"quit"|"exit")
             echo -e "${BLUE}👋 退出${NC}"
             ;;
-        "zhipu"|"anthropic"|"custom")
+        "zhipu"|"anthropic"|"kimi"|"custom")
             apply_config "$choice"
             ;;
         *)
@@ -334,6 +360,7 @@ show_help() {
     echo "可用配置:"
     echo "  zhipu     - 智谱AI"
     echo "  anthropic - Anthropic官方"
+    echo "  kimi      - 月之暗面"
     echo "  custom    - 自定义配置"
     echo ""
     echo "命令:"
@@ -354,7 +381,7 @@ main() {
         "")
             interactive_mode
             ;;
-        "zhipu"|"anthropic"|"custom")
+        "zhipu"|"anthropic"|"kimi"|"custom")
             apply_config "$1"
             ;;
         "-h"|"--help")

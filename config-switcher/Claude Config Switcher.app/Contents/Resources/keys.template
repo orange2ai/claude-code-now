@@ -14,6 +14,10 @@ ZHIPU_BASE_URL="https://open.bigmodel.cn/api/anthropic"
 ANTHROPIC_API_KEY="your_anthropic_api_key_here"
 ANTHROPIC_BASE_URL="https://api.anthropic.com"
 
+# 月之暗面Kimi配置 - 高速版 thinking-turbo 模型
+KIMI_API_KEY="your_kimi_api_key_here"
+KIMI_BASE_URL="https://api.moonshot.cn/anthropic"
+
 # 自定义配置
 CUSTOM_API_KEY="your_custom_api_key_here"
 CUSTOM_BASE_URL="your_custom_base_url_here"
