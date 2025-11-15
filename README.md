@@ -143,6 +143,26 @@ cp .claude/settings.json .claude/settings_custom.json
 }
 ```
 
+**Quick Setup with Preset Templates:**
+
+We provide 4 preset configuration templates in `config-switcher/presets/`:
+
+```bash
+# Copy all preset configs to ~/.claude/
+cd ~/.claude
+cp /path/to/claude-code-now/config-switcher/presets/settings*.json .
+```
+
+Or copy individually:
+```bash
+cp /path/to/claude-code-now/config-switcher/presets/settings_anthropic.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_kimi.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_zhipu.json ~/.claude/
+cp /path/to/claude-code-now/config-switcher/presets/settings_custom.json ~/.claude/
+```
+
+Then edit the files with your actual API keys and you're ready to use the config switcher!
+
 **Security:** API keys stored locally, never uploaded anywhere.
 
 **Use GUI:** Navigate to `config-switcher/Claude Config Switcher.app`
