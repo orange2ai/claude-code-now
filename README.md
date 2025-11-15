@@ -75,16 +75,77 @@ Drag the app to Finder toolbar, click to launch in any folder.
 Right-click on any folder to launch Claude Code Now.
 
 ### 🔧 API Config Switcher
+
 **One-click API configuration switching** with secure local storage.
 
 **Supported APIs:**
 - **Zhipu AI** (GLM) - Best for China users
+- **Kimi** (Moonshot AI) - High-speed thinking-turbo model
 - **Anthropic Official** - International users  
 - **Custom API** - Other compatible services
 
+**Minimal Version (Only 85 lines):**
+
+Use the command-line version without GUI app:
+
+```bash
+cd config-switcher
+./config-simpler.sh
+```
+
+**Supported Configs:**
+1. zhipu - Zhipu AI
+2. kimi - Moonshot AI (High-speed thinking-turbo)
+3. anthropic - Anthropic Official
+4. custom - Custom configuration
+
+**How to Add Configuration Files:**
+
+The minimal version uses preset configuration files. Here's how to create them:
+
+```bash
+cd ~
+
+# 1. Create Zhipu AI config
+cp .claude/settings.json .claude/settings_zhipu.json
+
+# 2. Edit the config with your Zhipu API key
+# Edit .claude/settings_zhipu.json, modify ANTHROPIC_AUTH_TOKEN and ANTHROPIC_BASE_URL
+
+# 3. Create other configs the same way
+cp .claude/settings.json .claude/settings_kimi.json
+cp .claude/settings.json .claude/settings_anthropic.json
+cp .claude/settings.json .claude/settings_custom.json
+```
+
+**Configuration File Templates:**
+
+**Zhipu AI (zhipu):**
+```json
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "your_zhipu_api_key",
+    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
+    "API_TIMEOUT_MS": "3000000"
+  }
+}
+```
+
+**Kimi (kimi)::**
+```json
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "your_kimi_api_key",
+    "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic",
+    "ANTHROPIC_MODEL": "kimi-k2-thinking-turbo",
+    "API_TIMEOUT_MS": "3000000"
+  }
+}
+```
+
 **Security:** API keys stored locally, never uploaded anywhere.
 
-**Usage:** Navigate to `config-switcher/Claude Config Switcher.app`
+**Use GUI:** Navigate to `config-switcher/Claude Config Switcher.app`
 
 ### 📁 Universal Launch
 Put the APP in any folder, click the icon to launch directly.

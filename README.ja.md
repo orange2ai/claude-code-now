@@ -72,16 +72,77 @@ Claude Codeは適切なコンテキストがあってこそ最高の結果を発
 任意のフォルダで右クリック、"Claude Code Now" を選択して起動。
 
 ### 🔧 API設定スイッチャー
+
 **ワンクリックAPI設定切り替え**、ローカル安全保存。
 
 **対応API：**
 - **Zhipu AI** (GLM) - 中国国内ユーザー向け
+- **Kimi** (月の暗面) - 高速 thinking-turbo モデル
 - **Anthropic 公式** - 海外ユーザー向け
 - **カスタム API** - その他互換サービス
 
+**ミニマルバージョン（85行のみ）：**
+
+GUIアプリ不要のコマンドライン版を使用：
+
+```bash
+cd config-switcher
+./config-simpler.sh
+```
+
+**対応設定：**
+1. zhipu - Zhipu AI
+2. kimi - Kimi（高速 thinking-turbo）
+3. anthropic - Anthropic 公式
+4. custom - カスタム設定
+
+**設定ファイルの作成方法：**
+
+ミニマルバージョンはプリセット設定ファイルを使用します。作成方法：
+
+```bash
+cd ~
+
+# 1. Zhipu AI設定の作成
+cp .claude/settings.json .claude/settings_zhipu.json
+
+# 2. Zhipu APIキーで設定を編集
+# .claude/settings_zhipu.json を編集し、ANTHROPIC_AUTH_TOKEN と ANTHROPIC_BASE_URL を修正
+
+# 3. 同様の方法で他の設定を作成
+cp .claude/settings.json .claude/settings_kimi.json
+cp .claude/settings.json .claude/settings_anthropic.json
+cp .claude/settings.json .claude/settings_custom.json
+```
+
+**設定ファイルテンプレート：**
+
+**Zhipu AI (zhipu):**
+```json
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "your_zhipu_api_key",
+    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
+    "API_TIMEOUT_MS": "3000000"
+  }
+}
+```
+
+**Kimi (kimi):**
+```json
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "your_kimi_api_key",
+    "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic",
+    "ANTHROPIC_MODEL": "kimi-k2-thinking-turbo",
+    "API_TIMEOUT_MS": "3000000"
+  }
+}
+```
+
 **セキュリティ：** API キーはローカル保存、アップロードされません。
 
-**使用方法：** `config-switcher/Claude Config Switcher.app` に移動
+**GUIを使用：** `config-switcher/Claude Config Switcher.app` に移動
 
 ### 📁 ユニバーサル起動
 アプリをどこにでも配置、アイコンをクリックで直接起動。
