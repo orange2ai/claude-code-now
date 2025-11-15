@@ -72,16 +72,77 @@ Claude Code只有在正确的Context下才能发挥最佳效果。无论你是�
 在任何文件夹右键选择"Claude Code Now"即可启动。
 
 ### 🔧 API配置切换器
+
 **一键切换API配置**，本地安全存储。
 
 **支持的API：**
 - **智谱AI** (GLM) - 国内用户首选
+- **Kimi** (月之暗面) - 高速 thinking-turbo 模型
 - **Anthropic官方** - 海外用户
 - **自定义API** - 其他兼容服务
 
+**极简版（仅85行）：**
+
+使用命令行版本，无需GUI应用：
+
+```bash
+cd config-switcher
+./config-simpler.sh
+```
+
+**支持的配置：**
+1. zhipu - 智谱AI
+2. kimi - 月之暗面 (高速 thinking-turbo)
+3. anthropic - Anthropic官方
+4. custom - 自定义配置
+
+**如何添加配置文件：**
+
+极简版使用预设配置文件，创建方法：
+
+```bash
+cd ~
+
+# 1. 创建智谱AI配置
+cp .claude/settings.json .claude/settings_zhipu.json
+
+# 2. 修改配置内容为智谱AI的API密钥
+# 编辑 .claude/settings_zhipu.json，修改 ANTHROPIC_AUTH_TOKEN 和 ANTHROPIC_BASE_URL
+
+# 3. 同样方式创建其他配置
+cp .claude/settings.json .claude/settings_kimi.json
+cp .claude/settings.json .claude/settings_anthropic.json
+cp .claude/settings.json .claude/settings_custom.json
+```
+
+**配置文件模板：**
+
+**智谱AI (zhipu):**
+```json
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "your_zhipu_api_key",
+    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
+    "API_TIMEOUT_MS": "3000000"
+  }
+}
+```
+
+**Kimi (kimi):**
+```json
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "your_kimi_api_key",
+    "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic",
+    "ANTHROPIC_MODEL": "kimi-k2-thinking-turbo",
+    "API_TIMEOUT_MS": "3000000"
+  }
+}
+```
+
 **安全性：** API密钥本地存储，绝不上传。
 
-**使用：** 进入 `config-switcher/Claude Config Switcher.app`
+**使用图形界面：** 进入 `config-switcher/Claude Config Switcher.app`
 
 ### 📁 通用启动
 把APP放在任何文件夹里，点击图标直接启动。
