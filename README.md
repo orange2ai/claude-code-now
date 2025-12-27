@@ -57,7 +57,7 @@ Claude Code has different "superpowers" in different folders:
 
 ### 🔥 Step 1: Click to Download
 
-[📥 **Download v1.6.0 Now**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[📥 **Download v1.6.1 Now**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.1/Claude.Code.Now.v1.6.1.macOS.zip)
 
 **File size**: 1.0MB | **Download time**: ~3 seconds
 
@@ -65,7 +65,7 @@ Claude Code has different "superpowers" in different folders:
 
 ### 👆 Step 2: Drag to Install
 
-1. Double-click `Claude.Code.Now.v1.6.0.macOS.zip` to extract
+1. Double-click `Claude.Code.Now.v1.6.1.macOS.zip` to extract
 2. Drag `Claude Code Now.app` to your `Applications` folder
 
 ```
@@ -194,7 +194,7 @@ Made by **Orange**, CEO of [ListenHub.AI](https://listenhub.ai)
 
 ## ⚡ Get Started Now
 
-[🔥 **Click Here to Download v1.6.0**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[🔥 **Click Here to Download v1.6.1**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.1/Claude.Code.Now.v1.6.1.macOS.zip)
 
 **30-second install, 3-second launch, save 5 minutes daily** 🚀
 
