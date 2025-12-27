@@ -4,189 +4,86 @@
 
 **世界上最快的 Claude Code 启动器**
 
-让 Claude Code 启动更简单，专为 MacOS 打造。
+单击启动 Claude Code，无需终端，无需权限确认，零麻烦。
 
-程序坞单击启动，或者在任何文件夹随时启动。
+## ⚡ 为什么需要它
 
-## 🏆 效率对比
+| 原来的方式 | 现在 |
+|-----------|------|
+| 打开终端 → 选文件夹 → 确认 → 等待 ~35秒 | 单击程序坞 ~3秒 ✨ |
 
-| 启动方式 | 操作步骤 | 时间 |
-|---------|----------|------|
-| **原来** | 打开终端 → 选择文件夹 → 确认工作区 → 等待权限确认 | ~35秒 |
-| **现在** | 程序坞单击 | ~3秒 ✨ |
+**每天节省5分钟，每年节省30小时。**
 
-一天启动 Claude Code 10次，就是宝贵的 5 分钟被浪费。
+## 🚀 快速开始
 
-## 🎯 为什么需要它？
-
-**Claude Code 不只是代码助手**，还能做数据分析、整理文件、处理文档。
-
-Claude Code 很好用，但启动麻烦：
-
-- 每次都要打开终端
-- 还要选择文件夹
-- 还要确认工作区信任
-- 还要等待权限确认
-
-**太麻烦了！**
-
-**用 Claude Code Now，立即提效 10 倍！**
-
-自动跳过权限确认，真正的一键启动。
-
-每天帮你节省 5 分钟，一年帮你节省 30 个小时。
-
-## 🧠 Context的威力
-
-**为什么要在不同文件夹启动Claude Code？** 因为**Context（上下文）就是一切！**
-
-Claude Code只有在正确的Context下才能发挥最佳效果。无论你是：
-- 📊 **分析数据** - 在研究文件夹中
-- 💻 **编写代码** - 在项目目录中
-- 📝 **处理文档** - 在报告文件夹中
-- 🎨 **创意工作** - 在设计文件夹中
-
-**每个Context都让Claude Code拥有超能力。**
-
-这就是为什么你需要在**每个重要文件夹**都放一个Claude Code Now启动器，随时以完美Context启动。
-
-**相信我：体验过Context感知的Claude Code后，你绝对回不去没有Context的AI了。**
-
----
-
-⭐ **喜欢这个工具？给个Star吧！** ⭐
-
-[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
-
----
-
-## ✨ 核心特性
-
-### 🖥 程序坞启动 (macOS)
-把应用放到程序坞，单击就能启动 Claude Code。
-
-### ⚡ Finder 工具栏启动 (macOS)
-把应用拖到 Finder 工具栏，在任意文件夹点击就能启动。
-
-### 📁 右键启动 (Windows)
-在任何文件夹右键选择"Claude Code Now"即可启动。
-
-### 📁 通用启动
-把APP放在任何文件夹里，点击图标直接启动。
-
-**就这么简单。**
-
-## ⚡ 快速开始
-
-### 🚀 一行命令安装（推荐）
+### macOS
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/install.sh | bash
 ```
 
-**就这么简单！** 这一行命令会自动：
-- ✅ 自动下载最新版本
-- ✅ 安装到 Applications 文件夹
-- ✅ 创建工作目录
-- ✅ 设置正确权限
-- ✅ 显示使用说明
+**手动安装：**
+1. 下载[最新版本](https://github.com/orange2ai/claude-code-now/releases)
+2. 拖拽 `Claude Code Now.app` 到应用程序
+3. 单击程序坞图标启动
 
-### 第一步：准备工作文件夹
-在 `文稿` 里创建 `Claude Code` 文件夹：
+**Finder 工具栏：**
+- 按住 `Command`，拖拽应用到 Finder 工具栏
+- 单击工具栏图标在任何文件夹启动
 
-```
-文稿/
-└── Claude Code/          # 创建这个文件夹
-```
+### Windows
 
-### 第二步：安装应用
+```batch
+# 先安装 Claude Code CLI
+npm install -g @anthropic-ai/claude-code
 
-#### 方法一：直接下载（推荐）
-1. 下载 [最新版本](https://github.com/orange2ai/claude-code-now/releases)
-2. 拖拽 `Claude Code Now.app` 到 Applications 文件夹
-
-**🖥 程序坞安装：**
-
-3. 从 Applications 拖拽到程序坞
-4. 单击就能用！
-
-**⚡ Finder 工具栏安装：**
-
-5. 按住 `Command` 键，把 `Claude Code Now.app` 拖拽到 Finder 工具栏
-
-6. 点击工具栏图标，Claude Code 在当前目录启动
-
-#### 方法二：Git 下载
-
-```bash
-git clone https://github.com/orange2ai/claude-code-now.git
-cp -r "Claude Code Now.app" /Applications/
+# 运行安装器（管理员权限）
+install.bat
+install-context-menu.bat
 ```
 
-#### 方法三：命令行安装
+右键任何文件夹 → "Claude Code Now"
 
-```bash
-# 下载脚本
-curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/claude-code-now.sh -o claude-code-now
-chmod +x claude-code-now
+## ✨ 核心特性
 
-# 移动到系统路径
-sudo mv claude-code-now /usr/local/bin/
-```
+- **🖥 程序坞启动** (macOS) - 单击即启动
+- **⚡ Finder 工具栏** (macOS) - 任意文件夹启动
+- **📁 右键启动** (Windows) - 右键菜单集成
+- **🚀 零配置** - 开箱即用
 
-### 第三步：开始使用
+## 💡 为什么上下文很重要
 
-**🖥 程序坞方式：**
-1. **单击程序坞图标** - 自动在 `文稿/Claude Code` 文件夹启动
-2. **开始工作** - 数据分析、写代码、处理文档
+Claude Code 在正确上下文下效果最佳：
+- 📊 在研究文件夹分析数据
+- 💻 在项目目录编写代码
+- 📝 在报告文件夹处理文档
 
-**⚡ Finder 工具栏方式：**
-1. **打开任意文件夹** - 在 Finder 中进入想要工作的目录
-2. **点击工具栏图标** - Claude Code 在当前目录启动
-3. **开始工作** - 直接在选定目录进行操作
+**在你工作的每个地方启动 Claude Code Now。**
 
-## 💡 设计理念
-
-**简单**：专注一个功能，做到极致。
-
-预测用户需求 → 找到核心功能 → 投入全部精力。
-
-结果：一键启动，极致简单。
-
-## 🔧 系统要求
-
-- **系统**：macOS 10.9+
-- **依赖**：已安装 [Claude Code CLI](https://docs.claude.com/en/docs/claude-code)
-- **文件夹**：在 `文稿` 中创建 `Claude Code` 文件夹
-
-## 📦 项目文件
+## 📦 项目结构
 
 ```
 Claude Code Now/
-├── 🖥 Claude Code Now.app        # 主应用
-├── install.sh                   # 智能一键安装脚本
-├── claude-code-now.sh           # 启动脚本
-└── 📚 说明文档
+├── 📱 Claude Code Now.app    # macOS 应用
+├── 🚀 install.sh              # 一键安装脚本
+├── 📂 macos/                  # macOS 脚本
+├── 📂 windows/                # Windows 脚本
+└── 📂 docs/                   # 文档
 ```
+
+## 🛠️ 系统要求
+
+**macOS:** macOS 10.9+ + Claude Code CLI  
+**Windows:** Windows 7+ + Node.js + Claude Code CLI
 
 ## 👨‍💼 关于作者
 
-**Orange** 制作，**[ListenHub.AI](https://listenhub.ai)** CEO 🎧
+由 **Orange** 制作，[ListenHub.AI](https://listenhub.ai) CEO
 
-**ListenHub.AI** - 使用AI将任何内容转换为引人入胜的播客。非常适合学习、内容创作和无障碍访问。
-
-理念：**预测 → 单点击穿 → All-in**
-
-*专注于解决真实问题的极简产品设计。*
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=orange2ai/claude-code-now&type=Date)](https://star-history.com/#orange2ai/claude-code-now&Date)
+产品哲学：**简单 → 专注 → 极致**
 
 ---
 
-⭐ **好用就给个 Star！** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
+⭐ **有用就给个Star！** [GitHub](https://github.com/orange2ai/claude-code-now)
 
-💬 **有问题？** [提交 Issue](https://github.com/orange2ai/claude-code-now/issues)
-
-🔗 **项目永久链接GitHub:** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
+💬 **问题？** [提交Issue](https://github.com/orange2ai/claude-code-now/issues)

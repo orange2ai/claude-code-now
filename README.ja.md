@@ -2,191 +2,88 @@
 
 [English](README.md) | [中文](README.zh.md) | **日本語**
 
-**世界最速の Claude Code ランチャー**
+**世界最速の Claude Code 起動ツール**
 
-Claude Code の起動をもっと簡単に。macOS 専用設計。
+ワンクリックで Claude Code を起動。ターミナル不要、権限確認不要、ストレスフリー。
 
-Dock から1クリックで起動、または任意のフォルダから即座に起動。
+## ⚡ なぜ必要か
 
-## 🏆 効率比較
+| 従来の方法 | 現在 |
+|-----------|------|
+| ターミナル開く → フォルダ選択 → 確認 → 待機 ~35秒 | Dockクリック ~3秒 ✨ |
 
-| 起動方法 | 操作手順 | 時間 |
-|---------|----------|------|
-| **従来** | ターミナルを開く → フォルダを選択 → ワークスペースを確認 → 権限確認を待つ | ~35秒 |
-| **今** | Dock をクリック | ~3秒 ✨ |
+**毎日5分節約、年間30時間節約。**
 
-1日に Claude Code を 10回起動すると、貴重な 5分間が無駄になります。
+## 🚀 クイックスタート
 
-## 🎯 なぜ必要なのか？
-
-**Claude Code はコードアシスタントだけではありません** - データ分析、ファイル整理、ドキュメント処理もできます。
-
-Claude Code は素晴らしいツールですが、起動が面倒：
-
-- 毎回ターミナルを開く必要がある
-- フォルダを選択する必要がある
-- ワークスペースの信頼を確認する必要がある
-- 権限確認を待つ必要がある
-
-**面倒すぎる！**
-
-**Claude Code Now で、効率が 10倍に！**
-
-権限確認を自動でスキップし、真の1クリック起動を実現。
-
-毎日 5分節約、年間 30時間を取り戻します。
-
-## 🧠 コンテキストの力
-
-**なぜ異なるフォルダでClaude Codeを起動するのか？** **コンテキストがすべて**だからです！
-
-Claude Codeは適切なコンテキストがあってこそ最高の結果を発揮します。例えば：
-- 📊 **データ分析** - 研究フォルダで
-- 💻 **コード作成** - プロジェクトディレクトリで  
-- 📝 **文書処理** - レポートフォルダで
-- 🎨 **クリエイティブ作業** - デザインフォルダで
-
-**各コンテキストがClaude Codeにスーパーパワーを与えます。**
-
-だからこそ**重要なフォルダすべて**にClaude Code Nowランチャーを配置し、完璧なコンテキストで瞬時に起動する必要があるのです。
-
-**信じてください：コンテキスト対応のClaude Codeを体験したら、もうコンテキストなしのAIには戻れません。**
-
----
-
-⭐ **このツールが気に入ったら、Starをお願いします！** ⭐
-
-[![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers) [![GitHub forks](https://img.shields.io/github/forks/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/network)
-
----
-
-## ✨ 主要機能
-
-### 🖥 Dock 起動 (macOS)
-アプリを Dock に配置、クリックで Claude Code が起動。
-
-### ⚡ Finder ツールバー起動 (macOS)
-アプリを Finder ツールバーにドラッグ、任意のフォルダでクリックして起動。
-
-### 📁 右クリック起動 (Windows)
-任意のフォルダで右クリック、"Claude Code Now" を選択して起動。
-
-### 📁 ユニバーサル起動
-アプリをどこにでも配置、アイコンをクリックで直接起動。
-
-**とてもシンプルです。**
-
-## ⚡ クイックスタート
-
-### 🚀 ワンラインインストール（推奨）
+### macOS
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/install.sh | bash
 ```
 
-**これだけです！** このコマンドで自動的に：
-- ✅ 最新バージョンを自動ダウンロード
-- ✅ Applications フォルダにインストール
-- ✅ 作業ディレクトリを作成
-- ✅ 適切な権限を設定
-- ✅ 使用方法を表示
+**手動インストール：**
+1. [最新版](https://github.com/orange2ai/claude-code-now/releases)をダウンロード
+2. `Claude Code Now.app` をアプリケーションフォルダにドラッグ
+3. Dockアイコンクリックで起動
 
-### ステップ1：作業フォルダの準備
-`書類` に `Claude Code` フォルダを作成：
+**Finder ツールバー：**
+- `Command` キーを押しながらアプリをツールバーにドラッグ
+- ツールバーアイコンクリックで任意のフォルダで起動
 
-```
-書類/
-└── Claude Code/          # このフォルダを作成
-```
+### Windows
 
-### ステップ2：アプリのインストール
+```batch
+# 先に Claude Code CLI をインストール
+npm install -g @anthropic-ai/claude-code
 
-#### 方法1：直接ダウンロード（推奨）
-1. [最新版](https://github.com/orange2ai/claude-code-now/releases) をダウンロード
-2. `Claude Code Now.app` を Applications フォルダにドラッグ
-
-**🖥 Dock にインストール：**
-
-3. Applications から Dock にドラッグ
-4. クリックで使用開始！
-
-**⚡ Finder ツールバーにインストール：**
-
-5. `Command` キーを押しながら、`Claude Code Now.app` を Finder ツールバーにドラッグ
-
-6. ツールバーアイコンをクリックすると、現在のディレクトリで Claude Code が起動
-
-#### 方法2：Git でダウンロード
-
-```bash
-git clone https://github.com/orange2ai/claude-code-now.git
-cp -r "Claude Code Now.app" /Applications/
+# インストーラー実行（管理者権限）
+install.bat
+install-context-menu.bat
 ```
 
-#### 方法3：コマンドラインインストール
+フォルダ右クリック → "Claude Code Now"
 
-```bash
-# スクリプトをダウンロード
-curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/claude-code-now.sh -o claude-code-now
-chmod +x claude-code-now
+## ✨ 主な機能
 
-# システムパスに移動
-sudo mv claude-code-now /usr/local/bin/
-```
+- **🖥 Dock 起動** (macOS) - ワンクリック起動
+- **⚡ Finder ツールバー** (macOS) - 任意のフォルダで起動
+- **📁 右クリック起動** (Windows) - コンテキストメニュー統合
+- **🚀 零設定** - インストール即使用
 
-### ステップ3：使用開始
+## 💡 コンテキストの重要性
 
-**🖥 Dock 方式：**
-1. **Dock アイコンをクリック** - `書類/Claude Code` フォルダで自動起動
-2. **作業開始** - データ分析、コーディング、ドキュメント処理
+Claude Code は適切なコンテキストで最高の結果を出します：
+- 📊 リサーチフォルダでデータ分析
+- 💻 プロジェクトディレクトリでコーディング
+- 📝 レポートフォルダでドキュメント処理
 
-**⚡ Finder ツールバー方式：**
-1. **任意のフォルダを開く** - Finder で作業したいディレクトリに移動
-2. **ツールバーアイコンをクリック** - 現在のディレクトリで Claude Code が起動
-3. **作業開始** - 選択したディレクトリで直接操作
+**仕事するすべての場所で Claude Code Now を起動。**
 
-## 💡 デザイン理念
-
-**シンプル**：1つの機能に集中し、極限まで追求。
-
-ユーザーニーズを予測 → コア機能を特定 → 全力を投入。
-
-結果：1クリック起動、究極のシンプルさ。
-
-## 🔧 システム要件
-
-- **システム**：macOS 10.9+
-- **依存関係**：[Claude Code CLI](https://docs.claude.com/en/docs/claude-code) がインストール済み
-- **フォルダ**：`書類` に `Claude Code` フォルダを作成
-
-## 📦 プロジェクトファイル
+## 📦 プロジェクト構造
 
 ```
 Claude Code Now/
-├── 🖥 Claude Code Now.app        # メインアプリ
-├── claude-code-now.sh           # 起動スクリプト
-├── install.sh                   # スマートワンラインインストーラー
-└── 📚 ドキュメント
+├── 📱 Claude Code Now.app    # macOS アプリ
+├── 🚀 install.sh              # ワンラインインストーラー
+├── 📂 macos/                  # macOS スクリプト
+├── 📂 windows/                # Windows スクリプト
+└── 📂 docs/                   # ドキュメント
 ```
 
-## 👨‍💼 作者について
+## 🛠️ 動作環境
 
-**Orange** 制作、**[ListenHub.AI](https://listenhub.ai)** CEO 🎧
+**macOS:** macOS 10.9+ + Claude Code CLI  
+**Windows:** Windows 7+ + Node.js + Claude Code CLI
 
-**ListenHub.AI** - AIを使用して任意のコンテンツを魅力的なポッドキャストに変換。学習、コンテンツ作成、アクセシビリティに最適。
+## 👨‍💼 製作者について
 
-理念：**予測 → 単点突破 → All-in**
+**Orange** による開発、[ListenHub.AI](https://listenhub.ai) CEO
 
-*実際の問題を解決するミニマル製品設計に特化。*
-
-## ⭐ Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=orange2ai/claude-code-now&type=Date)](https://star-history.com/#orange2ai/claude-code-now&Date)
+設計哲学：**シンプル → フォーカス → 極致**
 
 ---
 
-⭐ **気に入ったら Star をください！** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
+⭐ **役に立ったらStarを！** [GitHub](https://github.com/orange2ai/claude-code-now)
 
-💬 **質問がありますか？** [Issue を作成](https://github.com/orange2ai/claude-code-now/issues)
-
-🔗 **プロジェクト GitHub:** [https://github.com/orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
+💬 **質問？** [Issue](https://github.com/orange2ai/claude-code-now/issues)
