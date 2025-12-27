@@ -84,7 +84,7 @@ get_latest_release() {
     
     # 提取版本号和下载链接
     VERSION=$(echo "$release_info" | grep '"tag_name"' | cut -d'"' -f4)
-    DOWNLOAD_URL=$(echo "$release_info" | grep '"browser_download_url".*macOS.*\.zip"' | cut -d'"' -f4)
+    DOWNLOAD_URL=$(echo "$release_info" | grep '"browser_download_url".*\.zip' | grep -v '\.sha256' | cut -d'"' -f4 | head -1)
     
     if [[ -z "$VERSION" ]] || [[ -z "$DOWNLOAD_URL" ]]; then
         echo -e "${RED}❌ 错误: 无法解析版本信息${NC}"
