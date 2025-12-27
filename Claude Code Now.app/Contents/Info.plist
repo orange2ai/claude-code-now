@@ -13,9 +13,9 @@
     <key>CFBundleDisplayName</key>
     <string>🖥 Claude Code Now</string>
     <key>CFBundleVersion</key>
-    <string>1.2.2</string>
+    <string>1.6.0</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.2.2</string>
+    <string>1.6.0</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>

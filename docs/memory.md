@@ -5,8 +5,11 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
 
 ## Technical Architecture
 - `Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher` - Main launch script (AppleScript + Bash)
-- `claude-code-now.sh` - Command-line version
-- `claude-code-now.rb` - Homebrew Formula
+- `macos/claude-code-now.sh` - Command-line version
+- `macos/set-terminal.sh` - Terminal configuration tool
+- `windows/` - Windows-specific scripts
+- `docs/` - Documentation and project memory
+- `archives/` - Historical release versions
 - `CNAME` - GitHub Pages domain config (claudecodenow.com)
 
 ## Important Decisions & Lessons
@@ -153,3 +156,72 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
   - Developers: Rapid switching between different API services
   - Enterprise users: Secure key management for teams
   - Open source community: Safe code sharing without exposing secrets
+
+### v1.5.5 (2025-12-27) - Focus Strategy: Back to Core
+- **Major Decision**: Complete removal of config-switcher functionality
+- **Strategic Pivot**: Return to core value proposition - "Fastest Claude Code Launcher"
+- **Product Philosophy Achievement**:
+  - **Simple**: Removed 885 lines of non-core code (entire config-switcher directory)
+  - **Focused**: 100% focus on one-click launch experience
+  - **Ultimate**: Do one thing exceptionally well
+- **Rationale**: 
+  - Config switching is a separate problem space
+  - Users can manage API configs through Claude Code's native settings
+  - Maintaining config tools diluted the launcher's focus
+- **Deleted Components**:
+  - Entire `config-switcher/` directory (885 lines)
+  - GUI app `Claude Config Switcher.app`
+  - Preset templates and configuration scripts
+  - All related documentation in READMEs
+- **Core Value**: Speed + Simplicity - launch Claude Code instantly, anywhere
+
+### v1.5.6 (2025-12-27) - Project Structure Organization
+- **Major Refactoring**: Complete reorganization of project file structure
+- **New Folder Structure**:
+  - `macos/` - macOS-specific scripts and tools
+  - `windows/` - Windows-specific scripts and tools
+  - `docs/` - All documentation and project memory
+  - `archives/` - Historical release versions
+- **Benefits**:
+  - Clear separation of platform-specific code
+  - Easier navigation and maintenance
+  - Better organization for contributors
+  - Root directory now only contains essential files
+- **Files Moved**:
+  - 5 Windows files → `windows/` directory
+  - 2 macOS scripts → `macos/` directory
+  - 5 documentation files → `docs/` directory
+  - 5 archive files → `archives/` directory
+- **Updated References**:
+  - README.md project structure section
+  - memory.md technical architecture
+  - All installation scripts remain functional
+
+### v1.6.0 (2025-12-28) - The Renaissance Release 🚀
+- **Major Version Update**: 1.2.2 → 1.6.0 (Significant architectural changes)
+- **Strategic Pivot**: Complete return to core value - "Fastest Claude Code Launcher"
+- **Release Highlights**:
+  - Published to GitHub as official release
+  - Complete project restructuring
+  - 70% documentation reduction across all languages
+  - Professional release package with SHA256 checksums
+- **Release Statistics**:
+  - Package size: 1.0MB
+  - Files changed: 25
+  - Lines added: 2,407
+  - Release URL: https://github.com/orange2ai/claude-code-now/releases/tag/v1.6.0
+  - Pull Request: #32
+- **Marketing Achievement**:
+  - Clear value proposition restored
+  - Professional project structure
+  - Enhanced user experience
+  - Improved maintainability
+- **Product Philosophy Perfection**:
+  - **Simple**: From complex multi-tool to focused launcher
+  - **Focused**: 100% dedication to one function
+  - **Ultimate**: Industry-leading simplicity and speed
+- **Community Impact**:
+  - Easier onboarding for new users
+  - Clearer documentation
+  - Better contribution structure
+  - Professional open-source standards
