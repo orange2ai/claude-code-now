@@ -196,3 +196,32 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
   - README.md project structure section
   - memory.md technical architecture
   - All installation scripts remain functional
+
+### v1.6.0 (2025-12-28) - The Renaissance Release 🚀
+- **Major Version Update**: 1.2.2 → 1.6.0 (Significant architectural changes)
+- **Strategic Pivot**: Complete return to core value - "Fastest Claude Code Launcher"
+- **Release Highlights**:
+  - Published to GitHub as official release
+  - Complete project restructuring
+  - 70% documentation reduction across all languages
+  - Professional release package with SHA256 checksums
+- **Release Statistics**:
+  - Package size: 1.0MB
+  - Files changed: 25
+  - Lines added: 2,407
+  - Release URL: https://github.com/orange2ai/claude-code-now/releases/tag/v1.6.0
+  - Pull Request: #32
+- **Marketing Achievement**:
+  - Clear value proposition restored
+  - Professional project structure
+  - Enhanced user experience
+  - Improved maintainability
+- **Product Philosophy Perfection**:
+  - **Simple**: From complex multi-tool to focused launcher
+  - **Focused**: 100% dedication to one function
+  - **Ultimate**: Industry-leading simplicity and speed
+- **Community Impact**:
+  - Easier onboarding for new users
+  - Clearer documentation
+  - Better contribution structure
+  - Professional open-source standards
