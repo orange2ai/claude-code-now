@@ -32,6 +32,27 @@ Click icon → Start working instantly → ✨
 
 ---
 
+## 🌟 Why It's Special
+
+### 💡 The Power of Context
+
+Claude Code has different "superpowers" in different folders:
+
+- 📊 **Research folder** → Data analysis expert
+- 💻 **Project folder** → Code writing assistant  
+- 📝 **Documents folder** → Document processing expert
+
+**Launch in the right place = Claude Code gets smarter!**
+
+### ⚡ Core Features
+
+- **🚀 3-Second Launch** - Click and go, no waiting
+- **📁 Smart Folder Launch** - Works where you are
+- **🔒 Zero Configuration** - No setup needed
+- **⚙️ Permission Auto-Skip** - No annoying confirmations
+
+---
+
 ## ⏱️ Install in 30 Seconds
 
 ### 🔥 Step 1: Click to Download
@@ -70,7 +91,7 @@ Hold Command ⌘ → Drag app to Finder toolbar → Click to launch in any folde
 
 ---
 
-## 📸 How It Works
+## 📸 How to Use
 
 ### 📱 Dock Launch
 Click the Dock icon, automatically launches in `Documents/Claude Code` folder
@@ -134,18 +155,6 @@ By default launches in `Documents/Claude Code`, to change:
 # Edit launcher script, modify WORK_DIR variable
 open "Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher"
 ```
-
----
-
-## 💡 Why "Context" Matters
-
-Claude Code has different "superpowers" in different folders:
-
-- 📊 **Research folder** → Data analysis expert
-- 💻 **Project folder** → Code writing assistant  
-- 📝 **Documents folder** → Document processing expert
-
-**Launch in the right place, Claude Code gets smarter!**
 
 ---
 
