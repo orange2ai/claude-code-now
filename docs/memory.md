@@ -5,8 +5,11 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
 
 ## Technical Architecture
 - `Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher` - Main launch script (AppleScript + Bash)
-- `claude-code-now.sh` - Command-line version
-- `claude-code-now.rb` - Homebrew Formula
+- `macos/claude-code-now.sh` - Command-line version
+- `macos/set-terminal.sh` - Terminal configuration tool
+- `windows/` - Windows-specific scripts
+- `docs/` - Documentation and project memory
+- `archives/` - Historical release versions
 - `CNAME` - GitHub Pages domain config (claudecodenow.com)
 
 ## Important Decisions & Lessons
@@ -171,3 +174,25 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
   - Preset templates and configuration scripts
   - All related documentation in READMEs
 - **Core Value**: Speed + Simplicity - launch Claude Code instantly, anywhere
+
+### v1.5.6 (2025-12-27) - Project Structure Organization
+- **Major Refactoring**: Complete reorganization of project file structure
+- **New Folder Structure**:
+  - `macos/` - macOS-specific scripts and tools
+  - `windows/` - Windows-specific scripts and tools
+  - `docs/` - All documentation and project memory
+  - `archives/` - Historical release versions
+- **Benefits**:
+  - Clear separation of platform-specific code
+  - Easier navigation and maintenance
+  - Better organization for contributors
+  - Root directory now only contains essential files
+- **Files Moved**:
+  - 5 Windows files → `windows/` directory
+  - 2 macOS scripts → `macos/` directory
+  - 5 documentation files → `docs/` directory
+  - 5 archive files → `archives/` directory
+- **Updated References**:
+  - README.md project structure section
+  - memory.md technical architecture
+  - All installation scripts remain functional

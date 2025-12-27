@@ -242,12 +242,21 @@ Result: One-click launch, ultimate simplicity.
 Claude Code Now/
 ├── 🖥 Claude Code Now.app        # macOS app
 ├── install.sh                   # Smart one-line installer
-├── claude-code-now.sh           # macOS launch script
-├── claude-code-now.ps1          # Windows PowerShell script
-├── install.bat                  # Windows installation script
-├── install-context-menu.bat     # Windows right-click menu installer
-├── uninstall-context-menu.bat   # Windows right-click menu uninstaller
-└── 📚 Documentation
+├── macos/                       # macOS-specific files
+│   ├── claude-code-now.sh       # macOS launch script
+│   └── set-terminal.sh          # Terminal configuration tool
+├── windows/                     # Windows-specific files
+│   ├── claude-code-now.ps1      # Windows PowerShell script
+│   ├── install.bat              # Windows installation script
+│   ├── install-context-menu.bat # Right-click menu installer
+│   ├── uninstall-context-menu.bat # Right-click menu uninstaller
+│   └── diagnose.bat             # Windows diagnostic tool
+├── docs/                        # Documentation
+│   ├── memory.md                # Project memory and decisions
+│   ├── RELEASE_PROCESS.md       # Release guidelines
+│   └── quick-install.md         # Quick installation guide
+├── archives/                    # Historical releases
+└── README files (EN/ZH/JA)       # User documentation
 ```
 
 ## ⭐ Star History
