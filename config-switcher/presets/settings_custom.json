@@ -1,8 +1,0 @@
-{
-    "env": {
-        "ANTHROPIC_AUTH_TOKEN": "your_custom_api_key_here",
-        "ANTHROPIC_BASE_URL": "your_custom_base_url_here",
-        "API_TIMEOUT_MS": "3000000",
-        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1
-    }
-}
