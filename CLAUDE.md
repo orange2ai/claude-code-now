@@ -456,4 +456,147 @@ refactor/重构描述
 
 ---
 
-**📌 记住：每次更新README前，先查看本文件！**
+## 🚀 Release发布检查清单
+
+### 📋 发布前必做事项（防止遗漏）
+
+#### 1️⃣ 版本号更新
+- [ ] **Info.plist**: 更新 `CFBundleVersion` 和 `CFBundleShortVersionString`
+  - 文件位置: `Claude Code Now.app/Contents/Info.plist`
+  - 两处版本号都要修改
+- [ ] **README.md**: 更新所有版本引用（通常3处）
+  - 下载链接中的版本号
+  - 文件名中的版本号
+  - 底部CTA按钮中的版本号
+- [ ] **README.zh.md**: 更新所有版本引用（通常3处）
+- [ ] **README.ja.md**: 更新所有版本引用（通常3处）
+
+#### 2️⃣ 发布文件准备
+- [ ] **创建新版本zip包**
+  ```bash
+  zip -r "Claude.Code.Now.vX.X.X.macOS.zip" "Claude Code Now.app" -q
+  ```
+- [ ] **生成SHA256校验和**
+  ```bash
+  shasum -a 256 "Claude.Code.Now.vX.X.X.macOS.zip" > "Claude.Code.Now.vX.X.X.macOS.zip.sha256"
+  ```
+- [ ] **验证文件大小** (应该在1.0MB左右)
+
+#### 3️⃣ Git提交
+- [ ] **提交版本更新**
+  ```bash
+  git add "Claude Code Now.app/Contents/Info.plist"
+  git add "Claude.Code.Now.vX.X.X.macOS.zip" 
+  git add "Claude.Code.Now.vX.X.X.macOS.zip.sha256"
+  git add README.md README.zh.md README.ja.md
+  git commit -m "🔖 Bump version to vX.X.X"
+  ```
+- [ ] **推送到功能分支** (由于main分支保护)
+  ```bash
+  git checkout -b release/vX.X.X-version-bump
+  git push origin release/vX.X.X-version-bump
+  ```
+- [ ] **创建并合并PR**
+  ```bash
+  gh pr create --title "🔖 Version Bump to vX.X.X"
+  gh pr merge --merge
+  ```
+
+#### 4️⃣ GitHub Release
+- [ ] **创建GitHub Release**
+  ```bash
+  gh release create vX.X.X \
+    --title "Release Title" \
+    --notes "Release notes..." \
+    "Claude.Code.Now.vX.X.X.macOS.zip" \
+    "Claude.Code.Now.vX.X.X.macOS.zip.sha256"
+  ```
+- [ ] **验证Release发布**
+  ```bash
+  gh release view vX.X.X
+  ```
+
+#### 5️⃣ 发布后验证
+- [ ] **检查README下载链接**是否指向新版本
+- [ ] **检查Release页面**显示正常
+- [ ] **测试下载链接**可正常访问
+- [ ] **更新memory.md**记录本次发布
+
+---
+
+### 🚨 常见遗漏点（经验总结）
+
+#### ❌ 最容易遗漏的：
+1. **README版本号忘记更新** (v1.6.0 → v1.6.1)
+   - 影响：用户下载旧版本
+   - 预防：使用grep搜索所有版本引用
+   
+2. **Info.plist只更新一处版本号**
+   - 影响：系统显示版本不一致
+   - 预防：检查CFBundleVersion和CFBundleShortVersionString
+
+3. **忘记生成SHA256校验和**
+   - 影响：用户无法验证文件完整性
+   - 预防：检查清单包含此步骤
+
+#### ✅ 防遗漏机制：
+```bash
+# 发布前搜索所有旧版本号
+grep -r "1\.6\.0" README.md README.zh.md README.ja.md
+
+# 确认没有遗漏后发布
+```
+
+---
+
+### 📝 Release Notes模板
+
+```markdown
+# 🚀 Claude Code Now v{VERSION} - {TITLE}
+
+**🎯 Focus: {主要焦点}**
+
+---
+
+## ✨ What's New
+
+### 📚 Major Changes
+- **Change 1**: Description
+- **Change 2**: Description
+
+### 🛠️ Technical Fixes
+- **Fix 1**: Description
+- **Fix 2**: Description
+
+---
+
+## 📦 Installation
+
+### macOS (One-line)
+\`\`\`bash
+curl -fsSL https://raw.githubusercontent.com/orange2ai/claude-code-now/main/install.sh | bash
+\`\`\`
+
+### Manual Download
+1. Download \`Claude.Code.Now.v{VERSION}.macOS.zip\`
+2. Extract and drag \`Claude Code Now.app\` to Applications
+3. Click Dock icon to launch
+
+---
+
+## 🛠️ Technical Details
+
+- **Version**: {VERSION}
+- **Release Date**: {DATE}
+- **Platforms**: macOS 10.9+, Windows 7+
+- **Package Size**: ~1.0MB
+- **SHA256**: \`{SHA256}\`
+
+---
+
+**⭐ Star us on GitHub!** [orange2ai/claude-code-now](https://github.com/orange2ai/claude-code-now)
+```
+
+---
+
+**📌 记住：每次更新README前，先查看本文件！每次发布前，过一遍检查清单！**
