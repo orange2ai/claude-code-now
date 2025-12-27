@@ -36,7 +36,7 @@
 
 ### 🔥 第1步：点击下载
 
-[📥 **立即下载 v1.6.0**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[📥 **立即下载 v1.6.1**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.1/Claude.Code.Now.v1.6.1.macOS.zip)
 
 **文件大小**: 1.0MB | **下载时间**: ~3秒
 
@@ -44,7 +44,7 @@
 
 ### 👆 第2步：拖拽安装
 
-1. 双击下载的 `Claude.Code.Now.v1.6.0.macOS.zip` 解压
+1. 双击下载的 `Claude.Code.Now.v1.6.1.macOS.zip` 解压
 2. 把 `Claude Code Now.app` 拖到 `应用程序` 文件夹
 
 ```
@@ -173,7 +173,7 @@ open "Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher"
 
 ## ⚡ 立即开始
 
-[🔥 **点击这里下载 v1.6.0**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[🔥 **点击这里下载 v1.6.1**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.1/Claude.Code.Now.v1.6.1.macOS.zip)
 
 **30秒安装，3秒启动，每天省5分钟** 🚀
 
