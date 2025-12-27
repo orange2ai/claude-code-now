@@ -153,3 +153,21 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
   - Developers: Rapid switching between different API services
   - Enterprise users: Secure key management for teams
   - Open source community: Safe code sharing without exposing secrets
+
+### v1.5.5 (2025-12-27) - Focus Strategy: Back to Core
+- **Major Decision**: Complete removal of config-switcher functionality
+- **Strategic Pivot**: Return to core value proposition - "Fastest Claude Code Launcher"
+- **Product Philosophy Achievement**:
+  - **Simple**: Removed 885 lines of non-core code (entire config-switcher directory)
+  - **Focused**: 100% focus on one-click launch experience
+  - **Ultimate**: Do one thing exceptionally well
+- **Rationale**: 
+  - Config switching is a separate problem space
+  - Users can manage API configs through Claude Code's native settings
+  - Maintaining config tools diluted the launcher's focus
+- **Deleted Components**:
+  - Entire `config-switcher/` directory (885 lines)
+  - GUI app `Claude Config Switcher.app`
+  - Preset templates and configuration scripts
+  - All related documentation in READMEs
+- **Core Value**: Speed + Simplicity - launch Claude Code instantly, anywhere

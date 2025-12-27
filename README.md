@@ -74,99 +74,6 @@ Drag the app to Finder toolbar, click to launch in any folder.
 ### 📁 Right-Click Launch (Windows)
 Right-click on any folder to launch Claude Code Now.
 
-### 🔧 API Config Switcher
-
-**One-click API configuration switching** with secure local storage.
-
-**Supported APIs:**
-- **Zhipu AI** (GLM) - Best for China users
-- **Kimi** (Moonshot AI) - High-speed thinking-turbo model
-- **Anthropic Official** - International users  
-- **Custom API** - Other compatible services
-
-**Minimal Version (Only 85 lines):**
-
-Use the command-line version without GUI app:
-
-```bash
-cd config-switcher
-./config-simpler.sh
-```
-
-**Supported Configs:**
-1. zhipu - Zhipu AI
-2. kimi - Moonshot AI (High-speed thinking-turbo)
-3. anthropic - Anthropic Official
-4. custom - Custom configuration
-
-**How to Add Configuration Files:**
-
-The minimal version uses preset configuration files. Here's how to create them:
-
-```bash
-cd ~
-
-# 1. Create Zhipu AI config
-cp .claude/settings.json .claude/settings_zhipu.json
-
-# 2. Edit the config with your Zhipu API key
-# Edit .claude/settings_zhipu.json, modify ANTHROPIC_AUTH_TOKEN and ANTHROPIC_BASE_URL
-
-# 3. Create other configs the same way
-cp .claude/settings.json .claude/settings_kimi.json
-cp .claude/settings.json .claude/settings_anthropic.json
-cp .claude/settings.json .claude/settings_custom.json
-```
-
-**Configuration File Templates:**
-
-**Zhipu AI (zhipu):**
-```json
-{
-  "env": {
-    "ANTHROPIC_AUTH_TOKEN": "your_zhipu_api_key",
-    "ANTHROPIC_BASE_URL": "https://open.bigmodel.cn/api/anthropic",
-    "API_TIMEOUT_MS": "3000000"
-  }
-}
-```
-
-**Kimi (kimi)::**
-```json
-{
-  "env": {
-    "ANTHROPIC_AUTH_TOKEN": "your_kimi_api_key",
-    "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic",
-    "ANTHROPIC_MODEL": "kimi-k2-thinking-turbo",
-    "API_TIMEOUT_MS": "3000000"
-  }
-}
-```
-
-**Quick Setup with Preset Templates:**
-
-We provide 4 preset configuration templates in `config-switcher/presets/`:
-
-```bash
-# Copy all preset configs to ~/.claude/
-cd ~/.claude
-cp /path/to/claude-code-now/config-switcher/presets/settings*.json .
-```
-
-Or copy individually:
-```bash
-cp /path/to/claude-code-now/config-switcher/presets/settings_anthropic.json ~/.claude/
-cp /path/to/claude-code-now/config-switcher/presets/settings_kimi.json ~/.claude/
-cp /path/to/claude-code-now/config-switcher/presets/settings_zhipu.json ~/.claude/
-cp /path/to/claude-code-now/config-switcher/presets/settings_custom.json ~/.claude/
-```
-
-Then edit the files with your actual API keys and you're ready to use the config switcher!
-
-**Security:** API keys stored locally, never uploaded anywhere.
-
-**Use GUI:** Navigate to `config-switcher/Claude Config Switcher.app`
-
 ### 📁 Universal Launch
 Put the APP in any folder, click the icon to launch directly.
 
@@ -334,8 +241,6 @@ Result: One-click launch, ultimate simplicity.
 ```
 Claude Code Now/
 ├── 🖥 Claude Code Now.app        # macOS app
-├── 🔧 config-switcher/          # NEW: Config Switcher
-│   └── Claude Config Switcher.app # API configuration tool
 ├── install.sh                   # Smart one-line installer
 ├── claude-code-now.sh           # macOS launch script
 ├── claude-code-now.ps1          # Windows PowerShell script
