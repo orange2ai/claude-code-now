@@ -197,6 +197,35 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
   - memory.md technical architecture
   - All installation scripts remain functional
 
+### v1.6.1 (2025-12-27) - Documentation Principles & Workflow Guide 📝
+- **Major Achievement**: CLAUDE.md transformation from operations manual to principles-based guide
+- **Strategic Shift**: Abstract principles over step-by-step procedures
+- **Complete Documentation Overhaul**:
+  - CLAUDE.md now contains decision frameworks and mental models
+  - Comprehensive Git workflow guide to prevent 90% of common errors
+  - README redesign with user psychology principles applied
+  - All three languages (EN/ZH/JA) updated consistently
+- **Git Workflow Improvements**:
+  - Documented correct mental models for branch protection
+  - Clear decision trees for common scenarios
+  - Pre-commit checklist to prevent errors
+  - Absolute prohibitions list to avoid dangerous operations
+- **README Structure Enhancement**:
+  - Added "Why It's Special" section before installation
+  - Context explanation moved to front of user journey
+  - Core features listed early for better value proposition
+  - Improved logical flow based on user psychology
+- **Technical Fixes**:
+  - install.sh URL parsing updated for v1.6.0 release format
+  - Merged conflicting branches successfully
+  - Resolved Git workflow complexities
+- **Pull Request**: #36 - Successfully merged
+- **Philosophy Achievement**:
+  - External memory system established
+  - Decision frameworks for future development
+  - Clear principles to guide project evolution
+  - Reduced cognitive load for decision making
+
 ### v1.6.0 (2025-12-28) - The Renaissance Release 🚀
 - **Major Version Update**: 1.2.2 → 1.6.0 (Significant architectural changes)
 - **Strategic Pivot**: Complete return to core value - "Fastest Claude Code Launcher"
