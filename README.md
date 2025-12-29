@@ -23,8 +23,9 @@ Click icon → Start working instantly → ✨
 ```
 
 **💡 Side-by-side comparison:**
+
 | What | Traditional Way | Claude Code Now |
-|------|---------------|-----------------|
+|------|----------------|-----------------|
 | Time needed | ~35s | ~3s |
 | Steps required | 5-6 steps | 1 step |
 
