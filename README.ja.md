@@ -187,12 +187,8 @@ open "Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher"
 
 ---
 
-<div align="center">
-
 **役に立ったらStarをお願い⭐**
 
 [![GitHub stars](https://img.shields.io/github/stars/orange2ai/claude-code-now?style=social)](https://github.com/orange2ai/claude-code-now/stargazers)
 
 Made with ❤️ by [Orange](https://listenhub.ai)
-
-</div>
