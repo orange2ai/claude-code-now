@@ -200,7 +200,88 @@ EOF
 # 决定使用哪个终端应用
 TERMINAL_TO_USE=""
 
-# 1. 优先使用用户配置的终端
+# Function to count available terminals
+count_available_terminals() {
+    local count=0
+    for app in "iTerm2" "Warp" "Alacritty" "Terminal"; do
+        if [ -n "$(detect_terminal_app "$app")" ]; then
+            count=$((count + 1))
+        fi
+    done
+    echo $count
+}
+
+# Function to show first-time setup dialog
+show_first_time_terminal_selection() {
+    local available_terminals=()
+    local terminal_list=""
+
+    # Build list of available terminals
+    for app in "iTerm2" "Warp" "Alacritty" "Terminal"; do
+        local detected=$(detect_terminal_app "$app")
+        if [ -n "$detected" ]; then
+            available_terminals+=("$detected")
+            if [ -z "$terminal_list" ]; then
+                terminal_list="$detected"
+            else
+                terminal_list="$terminal_list, $detected"
+            fi
+        fi
+    done
+
+    # If only one terminal available, use it silently
+    if [ ${#available_terminals[@]} -eq 1 ]; then
+        echo "${available_terminals[0]}" > "$TERMINAL_CONFIG_FILE"
+        return 0
+    fi
+
+    # Show dialog for user to choose
+    # Build AppleScript list from bash array
+    local as_list="{"
+    local first=true
+    for term in "${available_terminals[@]}"; do
+        if [ "$first" = true ]; then
+            as_list="$as_list\"$term\""
+            first=false
+        else
+            as_list="$as_list, \"$term\""
+        fi
+    done
+    as_list="$as_list}"
+
+    local choice=$(osascript -e "tell application \"System Events\"
+        set terminal_list to $as_list
+        set user_choice to choose from list terminal_list with prompt \"Claude Code Now detected multiple terminal applications on your system.
+
+Which terminal would you like to use?\" with title \"Claude Code Now - Terminal Selection\" default items {\"iTerm\"}
+        return user_choice
+    end tell" 2>/dev/null)
+
+    if [ -n "$choice" ] && [ $? -eq 0 ]; then
+        echo "$choice" > "$TERMINAL_CONFIG_FILE"
+        echo "✅ Selected terminal: $choice"
+        return 0
+    else
+        # User cancelled, use default priority (iTerm2 first)
+        echo "ℹ️  Selection cancelled, using default terminal"
+        return 1
+    fi
+}
+
+# 1. Check if first-time setup is needed (no config file and multiple terminals)
+if [ ! -f "$TERMINAL_CONFIG_FILE" ]; then
+    AVAILABLE_COUNT=$(count_available_terminals)
+    if [ "$AVAILABLE_COUNT" -ge 2 ]; then
+        # First time with multiple terminals - show selection dialog
+        show_first_time_terminal_selection
+        # Re-read the config file that was just created
+        if [ -f "$TERMINAL_CONFIG_FILE" ]; then
+            PREFERRED_TERMINAL=$(cat "$TERMINAL_CONFIG_FILE" 2>/dev/null | tr -d '\n\r')
+        fi
+    fi
+fi
+
+# 2. 优先使用用户配置的终端
 if [ -n "$PREFERRED_TERMINAL" ]; then
     DETECTED_TERMINAL=$(detect_terminal_app "$PREFERRED_TERMINAL")
     if [ -n "$DETECTED_TERMINAL" ]; then
@@ -208,7 +289,7 @@ if [ -n "$PREFERRED_TERMINAL" ]; then
     fi
 fi
 
-# 2. 如果用户配置的终端不可用，使用默认优先级
+# 3. 如果用户配置的终端不可用，使用默认优先级
 if [ -z "$TERMINAL_TO_USE" ]; then
     # 按优先级检测：iTerm2 > Warp > Terminal
     for app in "iTerm2" "Warp" "Terminal"; do

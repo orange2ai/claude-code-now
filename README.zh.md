@@ -36,7 +36,7 @@
 
 ### 🔥 第1步：点击下载
 
-[📥 **立即下载 v1.6.0**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[📥 **立即下载 v1.6.3**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.3/Claude.Code.Now.v1.6.3.macOS.zip)
 
 **文件大小**: 1.0MB | **下载时间**: ~3秒
 
@@ -44,7 +44,7 @@
 
 ### 👆 第2步：拖拽安装
 
-1. 双击下载的 `Claude.Code.Now.v1.6.0.macOS.zip` 解压
+1. 双击下载的 `Claude.Code.Now.v1.6.3.macOS.zip` 解压
 2. 把 `Claude Code Now.app` 拖到 `应用程序` 文件夹
 
 ```
@@ -80,6 +80,13 @@ Claude Code Now.app   →         (拖拽到这里)
 
 ### 🚀 零配置使用
 无需任何设置，安装即用，自动跳过权限确认
+
+### 💡 智能终端选择
+**首次启动时的贴心功能**：
+- 如果系统有多个终端（iTerm2、Warp、Terminal等），会自动弹出选择框
+- 选择后会记住你的偏好，下次直接使用
+- 支持的终端：iTerm2、Warp、Alacritty、Terminal
+- 随时可以通过 `macos/set-terminal.sh` 更改偏好
 
 ---
 
@@ -173,7 +180,7 @@ open "Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher"
 
 ## ⚡ 立即开始
 
-[🔥 **点击这里下载 v1.6.0**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[🔥 **点击这里下载 v1.6.3**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.3/Claude.Code.Now.v1.6.3.macOS.zip)
 
 **30秒安装，3秒启动，每天省5分钟** 🚀
 

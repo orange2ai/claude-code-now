@@ -36,7 +36,7 @@ Click icon → Start working instantly → ✨
 
 ### 🔥 Step 1: Click to Download
 
-[📥 **Download v1.6.0 Now**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[📥 **Download v1.6.3 Now**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.3/Claude.Code.Now.v1.6.3.macOS.zip)
 
 **File size**: 1.0MB | **Download time**: ~3 seconds
 
@@ -44,7 +44,7 @@ Click icon → Start working instantly → ✨
 
 ### 👆 Step 2: Drag to Install
 
-1. Double-click `Claude.Code.Now.v1.6.0.macOS.zip` to extract
+1. Double-click `Claude.Code.Now.v1.6.3.macOS.zip` to extract
 2. Drag `Claude Code Now.app` to your `Applications` folder
 
 ```
@@ -80,6 +80,13 @@ Click the toolbar icon in any folder, launches directly in that folder
 
 ### 🚀 Zero Configuration
 No setup needed, works out of the box, auto-skips permission prompts
+
+### 💡 Smart Terminal Selection
+**Thoughtful feature for first-time users**:
+- If you have multiple terminals (iTerm2, Warp, Terminal, etc.), a selection dialog appears on first launch
+- Your preference is remembered for future launches
+- Supported terminals: iTerm2, Warp, Alacritty, Terminal
+- Change anytime using `macos/set-terminal.sh`
 
 ---
 
@@ -185,7 +192,7 @@ Made by **Orange**, CEO of [ListenHub.AI](https://listenhub.ai)
 
 ## ⚡ Get Started Now
 
-[🔥 **Click Here to Download v1.6.0**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.0/Claude.Code.Now.v1.6.0.macOS.zip)
+[🔥 **Click Here to Download v1.6.3**](https://github.com/orange2ai/claude-code-now/releases/download/v1.6.3/Claude.Code.Now.v1.6.3.macOS.zip)
 
 **30-second install, 3-second launch, save 5 minutes daily** 🚀
 

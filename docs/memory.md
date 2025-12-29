@@ -254,3 +254,38 @@ The fastest Claude Code launcher on macOS - focus on one-click launch, achieve u
   - Clearer documentation
   - Better contribution structure
   - Professional open-source standards
+### v1.6.2+ (2025-12-29) - Smart Terminal Selection Feature 💡
+- **New Feature**: First-launch terminal preference selection
+- **User Request**: Users wanted to choose their preferred terminal when multiple are available
+- **Implementation**:
+  - **Automatic Detection**: On first launch, if multiple terminals detected, show selection dialog
+  - **Smart Logic**:
+    - Check if `~/.claude-code-now-terminal` config exists
+    - If not, count available terminals (iTerm2, Warp, Alacritty, Terminal)
+    - If ≥2 terminals available, display native macOS dialog
+    - Save user preference to config file for future launches
+    - If only 1 terminal, use it silently (no dialog)
+  - **Graceful Degradation**: If user cancels dialog, fall back to default priority (iTerm2 > Warp > Terminal)
+- **New Functions Added**:
+  - `count_available_terminals()` - Count installed terminal apps
+  - `show_first_time_terminal_selection()` - Display dialog and save preference
+- **User Experience Improvements**:
+  - No setup required for new users - works out of the box
+  - Preference remembered once selected
+  - Can still manually configure via `macos/set-terminal.sh`
+  - Native macOS UI for familiar experience
+- **Supported Terminals**: iTerm2, Warp, Alacritty, Terminal (system default)
+- **Documentation Updates**:
+  - All three READMEs (EN/ZH/JA) updated with "Smart Terminal Selection" section
+  - Added explanation of first-launch behavior
+  - Included link to `set-terminal.sh` for manual configuration
+- **Files Modified**:
+  - `Claude Code Now.app/Contents/MacOS/ClaudeCodeLauncher` (lines 203-292)
+  - `README.md` - Added Smart Terminal Selection section
+  - `README.zh.md` - Added 智能终端选择 section
+  - `README.ja.md` - Added スマート端末選択 section
+  - Added `test-terminal-selection.sh` for testing
+- **Product Philosophy Achievement**:
+  - **Simple**: No configuration needed for most users
+  - **Thoughtful**: Anticipates user needs and provides choice
+  - **Respectful**: Remembers user preference, doesn't ask again
