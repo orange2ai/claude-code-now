@@ -1,82 +1,185 @@
-# 🖥 Claude Code Now - 即时启动，无需确认
+# Claude Code Now - Launch Claude Code instantly
 # PowerShell script to launch Claude Code Now in current directory
 
-# 保存上次目录的配置文件
-$LastDirFile = "$env:USERPROFILE\.claude-code-now-last-dir"
+# Error handling
+$ErrorActionPreference = "Continue"
+$LogDir = "$env:USERPROFILE\.claude-code-now-logs"
+$LogFile = "$LogDir\claude-code-now-$(Get-Date -Format 'yyyyMMdd-HHmmss').log"
 
-# 如果用户提供了参数，使用参数
-if ($args.Count -gt 0) {
-    $TargetDir = $args[0]
-}
-# 否则尝试读取上次的目录
-elseif (Test-Path $LastDirFile) {
-    $TargetDir = Get-Content $LastDirFile
-}
-# 都没有则使用用户主目录
-else {
-    $TargetDir = $env:USERPROFILE
+# Create log directory
+if (-not (Test-Path $LogDir)) {
+    New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
 }
 
-# 检查目录是否存在
-if (-not (Test-Path $TargetDir -PathType Container)) {
-    Write-Host "❌ 错误: 目录 '$TargetDir' 不存在" -ForegroundColor Red
-    exit 1
-}
-
-# 切换到目标目录
-Set-Location $TargetDir
-
-Write-Host "🖥 在目录 '$TargetDir' 启动 Claude Code Now..." -ForegroundColor Green
-
-# 查找 claude 命令
-$ClaudePath = $null
-
-# 尝试直接查找命令
-$ClaudeCommand = Get-Command claude -ErrorAction SilentlyContinue
-if ($ClaudeCommand) {
-    $ClaudePath = $ClaudeCommand.Source
-}
-else {
-    # 尝试常见的安装位置
-    $PossiblePaths = @(
-        "$env:APPDATA\npm\claude.cmd",
-        "$env:ProgramFiles\nodejs\claude.cmd",
-        "$env:LOCALAPPDATA\npm\claude.cmd"
+# Log function
+function Write-Log {
+    param(
+        [string]$Message,
+        [string]$Level = "INFO"
     )
-
-    foreach ($path in $PossiblePaths) {
-        if (Test-Path $path) {
-            $ClaudePath = $path
-            break
-        }
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logMessage = "[$timestamp] [$Level] $Message"
+    try {
+        Add-Content -Path $LogFile -Value $logMessage -ErrorAction SilentlyContinue
+    } catch {
+        # Ignore log write errors
     }
 }
 
-if (-not $ClaudePath) {
-    Write-Host "❌ 错误: Claude Code 未安装或不在 PATH 中" -ForegroundColor Red
-    Write-Host ""
-    Write-Host "💡 请确保已安装 Claude Code CLI" -ForegroundColor Yellow
-    Write-Host "💡 提示：请尝试运行 'npm install -g @anthropic-ai/claude-code'" -ForegroundColor Yellow
-    Write-Host ""
-    Write-Host "📝 常见安装位置：" -ForegroundColor Cyan
-    Write-Host "   - $env:APPDATA\npm\claude.cmd"
-    Write-Host "   - $env:ProgramFiles\nodejs\claude.cmd"
-    Write-Host "   - $env:LOCALAPPDATA\npm\claude.cmd"
-    exit 1
+# Check if in debug mode
+$IsDebugMode = $args -contains "--debug" -or $args -contains "-d"
+
+try {
+    Write-Log -Message "=== Claude Code Now Starting ==="
+    Write-Log -Message "Args: $($args -join ' ')"
+    Write-Log -Message "Current directory: $PWD"
+
+    # Last directory file
+    $LastDirFile = "$env:USERPROFILE\.claude-code-now-last-dir"
+
+    # Filter args to exclude debug flags
+    $FilteredArgs = @()
+    foreach ($arg in $args) {
+        if ($arg -ne "--debug" -and $arg -ne "-d") {
+            $FilteredArgs += $arg
+        }
+    }
+
+    # Determine target directory
+    if ($FilteredArgs.Count -gt 0) {
+        $TargetDir = $FilteredArgs[0]
+        Write-Log -Message "Using arg directory: $TargetDir"
+    }
+    elseif (Test-Path $LastDirFile) {
+        $TargetDir = Get-Content $LastDirFile
+        Write-Log -Message "Using last directory: $TargetDir"
+    }
+    else {
+        $TargetDir = $env:USERPROFILE
+        Write-Log -Message "Using user home: $TargetDir"
+    }
+
+    # Check if directory exists
+    if (-not (Test-Path $TargetDir -PathType Container)) {
+        $errorMsg = "Error: Directory '$TargetDir' does not exist"
+        Write-Host $errorMsg -ForegroundColor Red
+        Write-Log -Message $errorMsg -Level "ERROR"
+        if ($IsDebugMode) {
+            Read-Host "Press Enter to exit..."
+        }
+        exit 1
+    }
+
+    # Change to target directory
+    Set-Location $TargetDir
+    Write-Log -Message "Changed to directory: $TargetDir"
+
+    Write-Host "Starting Claude Code in '$TargetDir'..." -ForegroundColor Green
+
+    # Find claude command
+    $ClaudePath = $null
+
+    # Try to find command directly
+    $ClaudeCommand = Get-Command claude -ErrorAction SilentlyContinue
+    if ($ClaudeCommand) {
+        $ClaudePath = $ClaudeCommand.Source
+        Write-Log -Message "Found Claude command: $ClaudePath"
+    }
+    else {
+        Write-Log -Message "Claude command not found, searching common locations..." -Level "WARN"
+        # Try common installation paths
+        $PossiblePaths = @(
+            "$env:APPDATA\npm\claude.cmd",
+            "$env:ProgramFiles\nodejs\claude.cmd",
+            "$env:LOCALAPPDATA\npm\claude.cmd"
+        )
+
+        foreach ($path in $PossiblePaths) {
+            if (Test-Path $path) {
+                $ClaudePath = $path
+                Write-Log -Message "Found Claude: $ClaudePath"
+                break
+            }
+        }
+    }
+
+    if (-not $ClaudePath) {
+        $errorMsg = "Error: Claude Code is not installed or not in PATH"
+        Write-Host $errorMsg -ForegroundColor Red
+        Write-Host ""
+        Write-Host "Please ensure Claude Code CLI is installed" -ForegroundColor Yellow
+        Write-Host "Try running: npm install -g @anthropic-ai/claude-code" -ForegroundColor Yellow
+        Write-Host ""
+        Write-Host "Common installation locations:" -ForegroundColor Cyan
+        Write-Host "   - $env:APPDATA\npm\claude.cmd"
+        Write-Host "   - $env:ProgramFiles\nodejs\claude.cmd"
+        Write-Host "   - $env:LOCALAPPDATA\npm\claude.cmd"
+        Write-Log -Message $errorMsg -Level "ERROR"
+        Write-Log -Message "Log file: $LogFile" -Level "ERROR"
+
+        if ($IsDebugMode) {
+            Write-Host ""
+            Write-Host "Log file: $LogFile" -ForegroundColor Cyan
+            Read-Host "Press Enter to exit..."
+        }
+        exit 1
+    }
+
+    Write-Host "Found Claude Code: $ClaudePath" -ForegroundColor Green
+    Write-Log -Message "Claude path: $ClaudePath"
+
+    # Save current directory for next time
+    $TargetDir | Out-File -FilePath $LastDirFile -Encoding utf8
+    Write-Log -Message "Saved directory to: $LastDirFile"
+
+    # Verify Claude path security
+    if ($ClaudePath -match "claude(\.exe|\.cmd|\.ps1)?$") {
+        Write-Host "Security check passed, starting Claude Code..." -ForegroundColor Green
+        Write-Log -Message "Starting Claude Code..."
+
+        # Start Claude Code
+        & $ClaudePath --permission-mode bypassPermissions
+        $exitCode = $LASTEXITCODE
+
+        Write-Log -Message "Claude Code exited, code: $exitCode"
+
+        if ($exitCode -ne 0 -and $IsDebugMode) {
+            Write-Host ""
+            Write-Host "Claude Code exited abnormally (code: $exitCode)" -ForegroundColor Yellow
+            Write-Host "Log file: $LogFile" -ForegroundColor Cyan
+            Read-Host "Press Enter to exit..."
+        }
+
+        exit $exitCode
+    }
+    else {
+        $errorMsg = "Security check failed: Invalid Claude path detected"
+        Write-Host $errorMsg -ForegroundColor Red
+        Write-Host "Current path: $ClaudePath" -ForegroundColor Yellow
+        Write-Host "For security reasons, execution denied" -ForegroundColor Yellow
+        Write-Log -Message "$errorMsg, path: $ClaudePath" -Level "ERROR"
+
+        if ($IsDebugMode) {
+            Write-Host "Log file: $LogFile" -ForegroundColor Cyan
+            Read-Host "Press Enter to exit..."
+        }
+        exit 1
+    }
 }
+catch {
+    $errorMsg = "Unexpected error: $($_.Exception.Message)"
+    Write-Host $errorMsg -ForegroundColor Red
+    Write-Host ""
+    Write-Host "Error details: $($_.Exception.GetType().FullName)" -ForegroundColor Yellow
+    Write-Host "Location: $($_.InvocationInfo.ScriptLineNumber):$($_.InvocationInfo.OffsetInLine)" -ForegroundColor Yellow
+    Write-Log -Message "$errorMsg`nStack: $($_.ScriptStackTrace)" -Level "ERROR"
+    Write-Log -Message "Log file: $LogFile" -Level "ERROR"
 
-Write-Host "✅ 找到 Claude Code: $ClaudePath" -ForegroundColor Green
-
-# 保存当前目录，供下次使用
-$TargetDir | Out-File -FilePath $LastDirFile -Encoding utf8
-
-# 验证 Claude 路径安全性
-if ($ClaudePath -match "claude(\.exe|\.cmd)?$") {
-    Write-Host "🔒 安全验证通过，启动 Claude Code..." -ForegroundColor Green
-    & $ClaudePath --permission-mode bypassPermissions
-} else {
-    Write-Host "❌ 安全验证失败: 检测到无效的 Claude 路径" -ForegroundColor Red
-    Write-Host "🔍 当前路径: $ClaudePath" -ForegroundColor Yellow
-    Write-Host "⚠️  为了安全起见，拒绝执行该路径" -ForegroundColor Yellow
+    if ($IsDebugMode) {
+        Write-Host ""
+        Write-Host "Full log file: $LogFile" -ForegroundColor Cyan
+        Write-Host "Use --debug flag to see detailed information" -ForegroundColor Cyan
+        Read-Host "Press Enter to exit..."
+    }
     exit 1
 }

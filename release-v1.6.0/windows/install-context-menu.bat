@@ -47,21 +47,21 @@ echo.
 REM 添加文件夹右键菜单（在文件夹上右键）
 reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow" /ve /d "Claude Code Now" /f >nul
 reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow" /v "Icon" /d "%%SystemRoot%%\System32\SHELL32.dll,43" /f >nul
-reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File \"%USERPROFILE%\bin\claude-code-now.ps1\" \"%%V\"" /f >nul
+reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -WindowStyle Normal -NoProfile -File \"%USERPROFILE%\bin\claude-code-now.ps1\" \"%%V\"" /f >nul
 
 echo ✅ 已添加文件夹右键菜单
 
 REM 添加文件夹背景右键菜单（在文件夹内空白处右键）
 reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow" /ve /d "Claude Code Now" /f >nul
 reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow" /v "Icon" /d "%%SystemRoot%%\System32\SHELL32.dll,43" /f >nul
-reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File \"%USERPROFILE%\bin\claude-code-now.ps1\" \"%%V\"" /f >nul
+reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -WindowStyle Normal -NoProfile -File \"%USERPROFILE%\bin\claude-code-now.ps1\" \"%%V\"" /f >nul
 
 echo ✅ 已添加文件夹背景右键菜单
 
 REM 添加驱动器右键菜单
 reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow" /ve /d "Claude Code Now" /f >nul
 reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow" /v "Icon" /d "%%SystemRoot%%\System32\SHELL32.dll,43" /f >nul
-reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File \"%USERPROFILE%\bin\claude-code-now.ps1\" \"%%V\"" /f >nul
+reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -WindowStyle Normal -NoProfile -File \"%USERPROFILE%\bin\claude-code-now.ps1\" \"%%V\"" /f >nul
 
 echo ✅ 已添加驱动器右键菜单
 
