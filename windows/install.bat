@@ -1,132 +1,80 @@
 @echo off
 chcp 65001 >nul
-REM 🖥 Claude Code Now - Windows 安装脚本
+:: 🖥 Claude Code Now - 一键安装脚本
 
 echo.
 echo ========================================
-echo   🖥 Claude Code Now - Windows 安装
+echo   🚀 Claude Code Now 一键安装
 echo ========================================
 echo.
 
-REM 检查是否以管理员权限运行
+:: 1. 检查管理员权限
 net session >nul 2>&1
 if %errorLevel% neq 0 (
-    echo ❌ 请以管理员权限运行此脚本
-    echo.
-    echo 💡 右键点击此文件，选择 "以管理员身份运行"
+    echo ❌ 错误: 需要管理员权限
+    echo 💡 请右键点击此文件，选择 "以管理员身份运行"
     pause
     exit /b 1
 )
 
-REM 检查 Node.js 是否安装
-where node >nul 2>&1
+:: 2. 设置通用安装路径 (C:\Users\用户名\.claude\claude-code-now)
+set "InstallDir=%USERPROFILE%\.claude\claude-code-now"
+set "SourceDir=%~dp0"
+
+echo 📂 目标安装路径: %InstallDir%
+
+:: 3. 创建目录并复制文件
+if not exist "%InstallDir%" mkdir "%InstallDir%"
+
+echo 📝 正在复制文件...
+copy /Y "%SourceDir%claude-code-now.ps1" "%InstallDir%\" >nul
 if %errorLevel% neq 0 (
-    echo ❌ 未检测到 Node.js
-    echo.
-    echo 💡 请先安装 Node.js: https://nodejs.org
+    echo ❌ 错误: 未找到 claude-code-now.ps1
+    echo    请确保它和本脚本在同一目录下。
     pause
     exit /b 1
 )
 
-echo ✅ Node.js 已安装
-node --version
-
-REM 检查 npm 是否可用
-where npm >nul 2>&1
-if %errorLevel% neq 0 (
-    echo ❌ 未检测到 npm
-    pause
-    exit /b 1
-)
-
-echo ✅ npm 已安装
-npm --version
-
-REM 检查 Claude Code 是否已安装
-where claude >nul 2>&1
-if %errorLevel% equ 0 (
-    echo.
-    echo ✅ Claude Code 已安装
-    claude --version
+if exist "%SourceDir%claude.ico" (
+    copy /Y "%SourceDir%claude.ico" "%InstallDir%\" >nul
+    echo ✅ 图标文件已复制
 ) else (
-    echo.
-    echo ⚠️  Claude Code 未安装
-    echo 💡 请运行: npm install -g @anthropic-ai/claude-code
-    pause
-    exit /b 1
+    echo ⚠️ 未找到 claude.ico，将使用默认图标
 )
 
-REM 获取脚本所在目录
-set "SCRIPT_DIR=%~dp0"
+:: 4. 注册右键菜单
+echo 📝 正在注册右键菜单...
 
-REM 创建用户脚本目录（如果不存在）
-if not exist "%USERPROFILE%\bin" mkdir "%USERPROFILE%\bin"
-
-REM 复制 PowerShell 脚本
-echo.
-echo 📝 复制启动脚本到 %USERPROFILE%\bin...
-echo 🔍 源文件: %SCRIPT_DIR%claude-code-now.ps1
-echo 🎯 目标文件: %USERPROFILE%\bin\claude-code-now.ps1
-
-if not exist "%SCRIPT_DIR%claude-code-now.ps1" (
-    echo ❌ 源文件不存在: %SCRIPT_DIR%claude-code-now.ps1
-    echo 💡 请确保 claude-code-now.ps1 文件在当前目录中
-    pause
-    exit /b 1
-)
-
-copy /Y "%SCRIPT_DIR%claude-code-now.ps1" "%USERPROFILE%\bin\claude-code-now.ps1"
-if %errorLevel% neq 0 (
-    echo ❌ 复制失败
-    echo 💡 请检查文件权限和磁盘空间
-    pause
-    exit /b 1
-)
-
-if not exist "%USERPROFILE%\bin\claude-code-now.ps1" (
-    echo ❌ 复制后文件不存在
-    pause
-    exit /b 1
-)
-
-echo ✅ PowerShell 脚本复制成功
-
-REM 创建批处理包装器，方便从命令行调用
-echo 📝 创建批处理包装器...
-echo @echo off > "%USERPROFILE%\bin\claude-code-now.bat"
-echo powershell -ExecutionPolicy Bypass -File "%USERPROFILE%\bin\claude-code-now.ps1" %%* >> "%USERPROFILE%\bin\claude-code-now.bat"
-
-if not exist "%USERPROFILE%\bin\claude-code-now.bat" (
-    echo ❌ 批处理包装器创建失败
-    pause
-    exit /b 1
-)
-
-echo ✅ 启动脚本已安装
-
-REM 检查 PATH 中是否包含用户 bin 目录
-echo.
-echo 📝 检查 PATH 环境变量...
-echo %PATH% | findstr /C:"%USERPROFILE%\bin" >nul
-if %errorLevel% neq 0 (
-    echo.
-    echo ⚠️  %USERPROFILE%\bin 不在 PATH 中
-    echo.
-    echo 💡 请手动添加到 PATH，或者运行以下命令：
-    echo.
-    echo setx PATH "%%PATH%%;%USERPROFILE%\bin"
-    echo.
-    echo 添加后需要重启终端才能生效
-    pause
+:: --- 文件夹右键 ---
+reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow" /ve /d "Claude Code Now" /f >nul
+if exist "%InstallDir%\claude.ico" (
+    reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow" /v "Icon" /d "%InstallDir%\claude.ico" /f >nul
 ) else (
-    echo ✅ PATH 已包含用户 bin 目录
+    reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow" /v "Icon" /d "powershell.exe" /f >nul
 )
+reg add "HKEY_CLASSES_ROOT\Directory\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -NoExit -File \"%InstallDir%\claude-code-now.ps1\" \"%%V\"" /f >nul
+
+:: --- 背景右键 ---
+reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow" /ve /d "Claude Code Now" /f >nul
+if exist "%InstallDir%\claude.ico" (
+    reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow" /v "Icon" /d "%InstallDir%\claude.ico" /f >nul
+) else (
+    reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow" /v "Icon" /d "powershell.exe" /f >nul
+)
+reg add "HKEY_CLASSES_ROOT\Directory\Background\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -NoExit -File \"%InstallDir%\claude-code-now.ps1\" \"%%V\"" /f >nul
+
+:: --- 驱动器右键 ---
+reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow" /ve /d "Claude Code Now" /f >nul
+if exist "%InstallDir%\claude.ico" (
+    reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow" /v "Icon" /d "%InstallDir%\claude.ico" /f >nul
+) else (
+    reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow" /v "Icon" /d "powershell.exe" /f >nul
+)
+reg add "HKEY_CLASSES_ROOT\Drive\shell\ClaudeCodeNow\command" /ve /d "powershell.exe -ExecutionPolicy Bypass -NoExit -File \"%InstallDir%\claude-code-now.ps1\" \"%%V\"" /f >nul
 
 echo.
 echo ========================================
-echo   ✅ 基础安装完成！
+echo   ✅ 安装成功！
 echo ========================================
-echo.
-echo 📝 下一步：运行 install-context-menu.bat 安装右键菜单
 echo.
 pause
